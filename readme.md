@@ -1,6 +1,7 @@
 #######################################
 
-WIPPER World, Project to WIPCamp
+Alchemist
+Laravel 5.2 Boilerplate,
 
 
 Plugin WIKI
@@ -8,9 +9,4 @@ Plugin WIKI
 [HTML Helper] https://laravelcollective.com/docs/5.2/html
 [Theme] https://github.com/teepluss/laravel-theme
 
-
-
-
-Develop by 8'Developer.
-
-jenkins test..
+Develop by Nathawat.
