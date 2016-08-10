@@ -25,3 +25,15 @@ Plugin WIKI
 [Theme] https://github.com/teepluss/laravel-theme
 
 Develop by Nathawat.
+
+
+#############################
+How to Migration Database พี่จะไม่ให้ db เครื่อง dev นะ
+cd เข้าไปโพลเดอร์งาน แล้วพิมพ์ 
+php artisan migrate 
+
+ถ้าไม่ขึ้นไป config db ตาม user / pass localhost ของเธอนะ 
+แล้วลองพิมพ์ใหม่ 
+
+Edit by Kunchai.
+##############################
