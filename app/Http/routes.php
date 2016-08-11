@@ -9,7 +9,7 @@ Route::get('/_debugbar/assets/javascript', [
     'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js'
 ]);
 
-
+Route::controller('/organization', 'OrgController');
 
 Route::group(['middleware' => ['web']], function () {
     Route::controller('/','MainController');
@@ -18,3 +18,4 @@ Route::group(['middleware' => ['web']], function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
