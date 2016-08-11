@@ -17,7 +17,6 @@ class Regis extends Migration
         $table->bigInteger('std_id');
         $table->string('club_id', 100)->unique();
         $table->timestamps();
-        $table->primary('id');
         $table->index('id');
       });
     }
