@@ -12,6 +12,7 @@ Route::get('/_debugbar/assets/javascript', [
 
 
 Route::group(['middleware' => ['web']], function () {
+    Route::controller('/organization','OrgController');
     Route::controller('/','MainController');
 });
 
