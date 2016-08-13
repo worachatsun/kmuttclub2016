@@ -12,25 +12,32 @@ class OrgController extends ACMBaseController
 {
 
   protected $OrgRepository;
-  
-  public function __construct(OrgRepositoryInterface $OrgRepository){
-    parent::__construct();
-    $this->OrgRepository = $OrgRepository;
-  }
 
-  public function getIndex(){
-    
-    $clubs = $this->OrgRepository->getClubs();
+    public function __construct(OrgRepositoryInterface $OrgRepository){
+        parent::__construct();
+        $this->OrgRepository = $OrgRepository;
+    }
 
-    $content = array(
-      'clubs' => $clubs
-    );
+    public function getAllClubs(){
+        $clubs = $this->OrgRepository->getAllClubs();
+        return json_decode($clubs,true);
+    }
 
-    return $this->theme->scope('organization.index',$content)->render();
-  }
+    public function getAllClubMembers($id){
+        $members = $this->OrgRepository->getMembers($id);
+        $memberAmount = $this->OrgRepository->getMembersAmount($id);
 
-  public function getDashboard(){
-    return $this->theme->scope('organization.index')->render();
-  }
+        $collection = collect(['members'=>$members, "amount"=>$memberAmount]);
+        return $collection;
+    }
+
+    public function getMemberInfos($id){
+        return $this->OrgRepository->getInformation($id);
+    }
+
+    public function getStudentClub($stdId){
+        return $this->OrgRepository->getRegistryInfos($stdId);
+    }
+
 
 }

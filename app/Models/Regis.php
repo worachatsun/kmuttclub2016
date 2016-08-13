@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Club extends Model
+class Regis extends Model
 {
-    protected $table = 'clubs';
+    protected $table = 'enrolls';
 }

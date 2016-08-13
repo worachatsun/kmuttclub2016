@@ -9,9 +9,8 @@ Route::get('/_debugbar/assets/javascript', [
     'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js'
 ]);
 
-Route::controller('/organization', 'OrgController');
-
 Route::group(['middleware' => ['web']], function () {
+    Route::controller('organization', 'OrgController');
     Route::controller('/','MainController');
 });
 
