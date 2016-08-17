@@ -10,10 +10,13 @@ Route::get('/_debugbar/assets/javascript', [
 ]);
 
 
+Route::get('/enroll','MainController@getEnroll');
 
 Route::group(['middleware' => ['web']], function () {
     Route::controller('/','MainController');
+    
 });
+
 
 Route::auth();
 
