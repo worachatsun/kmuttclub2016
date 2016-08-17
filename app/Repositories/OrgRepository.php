@@ -2,7 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\Student;
-use App\Models\Regis;
+use App\Models\Enroll;
 use App\Models\Club;
 
 class OrgRepository implements OrgRepositoryInterface{
@@ -14,15 +14,20 @@ class OrgRepository implements OrgRepositoryInterface{
     public function __construct(){
         $this->studentAccounts = new Student();
         $this->clubs = new Club();
-        $this->registrations = new Regis();
+        $this->registrations = new Enroll();
     }
 
     public function getAllClubs(){
         $clubsInf = $this->clubs->all();
+        $result = array();
+        foreach($clubsInf as $club){
+            // brust force !
+            array_add($club, 'amount_member', $this->getClubMembersAmount($club['club_id']));
+        }
         return $clubsInf;
     }
 
-    public function getMembers($id){
+    public function getClubMembers($id){
         $members = $this->registrations->where('club_id',$id)->get();
         return $members;
     }
@@ -32,8 +37,8 @@ class OrgRepository implements OrgRepositoryInterface{
         return $stdInfos;
     }
 
-    public function getMembersAmount($id){
-        $members = $this->getMembers($id);
+    public function getClubMembersAmount($id){
+        $members = $this->getClubMembers($id);
         return $members->count();
     }
 

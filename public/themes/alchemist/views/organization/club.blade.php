@@ -28,7 +28,7 @@
             <div class="portlet-title">
               <div class="caption">
                 <i class="fa fa-cogs font-green-sharp"></i>
-                <span class="caption-subject font-green-sharp bold uppercase">Clubs #1</span>
+                <span class="caption-subject font-green-sharp bold uppercase">Clubs #{{ $club_id }}</span>
               </div>
               <div class="tools">
                 <a href="javascript:;" class="collapse" data-original-title="" title="">
@@ -50,13 +50,13 @@
                         #
                       </th>
                       <th>
-                        CLUB NAME
+                        STUDENT ID
                       </th>
                       <th>
-                        CLUB SECRET CODE
+                        NAME - SURNAME
                       </th>
                       <th>
-                        MEMBER
+                        FACULTY
                       </th>
                       <th>
                         STATUS
@@ -64,21 +64,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($clubs as $key => $club)
+                    @foreach ($members as $key => $member)
                     <tr>
                       <td>
                         {{ $key+1 }}
                       </td>
                       <td>
-                        <a href="/club/{{ $club['club_id'] }}">
-                          {{ array_get($club,'club_name',"Null") }}
-                        </a>
+                        <?php echo $member; ?>
                       </td>
                       <td>
-                        {{ $club['club_secret_code'] }}
+                        {{ $member['club_secret_code'] }}
                       </td>
                       <td>
-                        {{ $club['amount_member'] }} คน
+                        {{ $member['amount_member'] }} คน
                       </td>
                       <td>
                         <span class="bold theme-font">INCOMPLETE</span>

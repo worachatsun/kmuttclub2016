@@ -5,11 +5,12 @@ interface OrgRepositoryInterface{
     
     public function getAllClubs();
 
-    public function getMembers($id);
+    public function getClubMembers($id);
 
     public function getInformation($id);
 
-    public function getMembersAmount($id);
+    public function getClubMembersAmount($id);
 
     public function getRegistryInfos($id);
+    
 }
