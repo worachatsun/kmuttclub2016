@@ -1,24 +1,24 @@
 <div class="page-container">
-	<div class="page-content club-list-container">
-		<div class="container">
-			<ul class="page-breadcrumb breadcrumb">
+  <div class="page-content">
+    <div class="container">
+      <ul class="page-breadcrumb breadcrumb">
         <li>
           <a href="{{ URL::to('organization/')  }}">หน้าแดชบอร์ด</a>
           <i class="fa fa-circle"></i>
         </li>
         <li class="active">
-		  {{ $club->club_name }}
+          {{ $club['club_name'] }}
         </li>
       </ul>
       <div class="row">
-        <div class="col-md-8 col-xs-12">
+        <div class="col-md-7 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
 					<div class="visual">
 						<i class="fa fa-group fa-icon-medium"></i>
 					</div>
 					<div class="details">
 						<div class="number">
-							 {{ $club->club_name }}
+							 {{ $club['club_name'] }}
 						</div>
 						<div class="desc">
 							 ชื่อชมรม
@@ -26,7 +26,7 @@
 					</div>
 					</a>
 				</div>
-        <div class="col-md-4 col-xs-12">
+        		<div class="col-md-3 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
 					<div class="visual">
 						<i class="fa fa-group fa-icon-medium"></i>
@@ -37,6 +37,21 @@
 						</div>
 						<div class="desc">
 							 จำนวนคนสมัครทั้งหมด
+						</div>
+					</div>
+					</a>
+				</div>
+				<div class="col-md-2 col-xs-12">
+					<a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
+					<div class="visual">
+						<i class="fa fa-group fa-icon-medium"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+							 Register
+						</div>
+						<div class="desc">
+							 Student
 						</div>
 					</div>
 					</a>
@@ -69,6 +84,9 @@
                   <thead>
                     <tr class="uppercase">
                       <th>
+                        #
+                      </th>
+                      <th>
                         STUDENT ID
                       </th>
                       <th>
@@ -86,7 +104,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                   @foreach ($members as $key => $member)
+                    @foreach ($members as $key => $member)
                     <tr>
                       <td>
                         {{ $key+1 }}
@@ -117,28 +135,7 @@
           </div>
           <!-- END SAMPLE TABLE PORTLET-->
         </div>
-      
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </div>
