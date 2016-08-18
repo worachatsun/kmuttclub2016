@@ -7,6 +7,7 @@
           <i class="fa fa-circle"></i>
         </li>
       </ul>
+      {{ $user }}
       <div class="row">
         <div class="col-md-12 col-xs-12">
           <a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
