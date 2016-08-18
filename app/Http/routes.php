@@ -14,15 +14,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::controller('auth','Auth\AuthController');
 
     Route::group(['middleware' => ['auth']], function () {
+      Route::controller('club','ClubController');
+      Route::controller('regis','RegisterController');
         Route::controller('organization', 'OrgController');
         Route::controller('/','MainController');
     });
 
-});
-
-
-
-Route::get('/home', 'HomeController@index');
 
 
 
@@ -31,4 +28,3 @@ Route::get('/home', 'HomeController@index');
 //Route::auth();
 
 //Route::get('/home', 'HomeController@index');
-
