@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'adldap',
         ],
 
         'api' => [
@@ -64,15 +64,28 @@ return [
     |
     */
 
-    'providers' => [
-        // 'users' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\User::class,
-        // ],
+    // 'providers' => [
+    //     // 'users' => [
+    //     //     'driver' => 'eloquent',
+    //     //     'model' => App\User::class,
+    //     // ],
+    //
+    //      'users' => [
+    //          'driver' => 'database',
+    //          'table' => 'users',
+    //     ],
+    // ],
 
-         'users' => [
-             'driver' => 'database',
-             'table' => 'wip8_admins',
+    'providers' => [
+        // New 'adldap' provider:
+        'adldap' => [
+            'driver' => 'adldap',
+            'model'  => App\User::class,
+        ],
+
+        'users' => [
+            'driver' => 'eloquent',
+            'model'  => App\User::class,
         ],
     ],
 
