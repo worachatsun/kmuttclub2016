@@ -25,5 +25,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         App::bind('App\Repositories\PrivilegeRepositoryInterface', 'App\Repositories\PrivilegeRepository');
+        App::bind('App\Repositories\OrgRepositoryInterface', 'App\Repositories\OrgRepository');
     }
 }

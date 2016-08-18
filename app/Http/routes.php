@@ -9,16 +9,20 @@ Route::get('/_debugbar/assets/javascript', [
     'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js'
 ]);
 
-
-
 Route::group(['middleware' => ['web']], function () {
+
     Route::controller('auth','Auth\AuthController');
 
     Route::group(['middleware' => ['auth']], function () {
-        Route::controller('/main','MainController');
+        Route::controller('organization', 'OrgController');
+        Route::controller('/','MainController');
     });
 
 });
+
+
+
+Route::get('/home', 'HomeController@index');
 
 
 
@@ -27,3 +31,4 @@ Route::group(['middleware' => ['web']], function () {
 //Route::auth();
 
 //Route::get('/home', 'HomeController@index');
+
