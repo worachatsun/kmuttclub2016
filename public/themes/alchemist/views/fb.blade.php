@@ -17,7 +17,7 @@
 					<li class="dropdown dropdown-user dropdown-dark">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<img src="<?php echo url(""); ?>/themes/alchemist/assets/img/avatar9.jpg" alt="logo" class="logo-default">
-						<span class="username username-hide-mobile">Nick</span>
+						<span class="username username-hide-mobile">{{ $name }}</span>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
@@ -70,7 +70,7 @@
 		<div class="container">
 			<!-- BEGIN PAGE TITLE -->
 			<div class="page-title">
-				<h1>สวัสดี <small>กรรชัย สดหอม</small> <small>คณะเทคโนโลยีสารสนเทศ</small></h1>
+				<h1>Hello <small>{{ $name }}</small> <small>{{ $faculty }}</small></h1>
 
 			</div>
 			<!-- END PAGE TITLE -->
@@ -119,12 +119,8 @@
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 								<div class="form-body">
 									<div class="form-group form-md-line-input has-error">
-										<input type="text" class="form-control" readonly value="กรรชัย" id="form_control_1">
+										<input type="text" class="form-control" readonly value="{{ $name }}" id="form_control_1">
 										<label for="form_control_1">Name</label>
-									</div>
-									<div class="form-group form-md-line-input has-error">
-										<input type="text" class="form-control" readonly value="สดหอม" id="form_control_1">
-										<label for="form_control_1">Sutname</label>
 									</div>
 									<div class="form-group form-md-line-input">
 										<input type="text" class="form-control" name="fb" id="form_control_1" placeholder="Enter your Facebook Name">

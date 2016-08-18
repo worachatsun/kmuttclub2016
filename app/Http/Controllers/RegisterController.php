@@ -17,8 +17,9 @@ class RegisterController extends ACMBaseController
       $this->RegisterRepository = $RegisterRepository;
   }
 
-  public function getRegister(){
-    return $this->theme->scope('fb')->layout('blank')->render();
+  public function getIndex(){
+    $data = $this->user;
+    return $this->theme->scope('fb',$data)->layout('blank')->render();
   }
 
   public function postRegister(){
