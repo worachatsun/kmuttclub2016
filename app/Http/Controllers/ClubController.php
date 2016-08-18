@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Repositories\ClubRepositoryInterface;
 use Illuminate\Http\Request;
 use Input;
@@ -63,6 +64,15 @@ class ClubController extends ACMBaseController
        return $this->theme->scope('club.regis')->render();
        
 
-    }    
+    }
 
+    public function getAddclub(){
+        return $this->theme->scope('club')->layout('blank')->render();
+    }
+
+    public function postAddclub(){
+        $data = Input::all();
+        $this->ClubRepository->addClub(1,array_get($data,'club_id'));
+        return $this->theme->scope('club')->layout('blank')->render();
+    }
 }

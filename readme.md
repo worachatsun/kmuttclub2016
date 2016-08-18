@@ -30,19 +30,19 @@ Develop by Nathawat.
 #############################
 
 How to Migration Database พี่จะไม่ให้ db เครื่อง dev นะ
-cd เข้าไปโพลเดอร์งาน แล้วพิมพ์ 
-php artisan migrate 
+cd เข้าไปโพลเดอร์งาน แล้วพิมพ์
+php artisan migrate
 
-ถ้าไม่ขึ้นไป config db ตาม user / pass localhost ของเธอนะ 
-แล้วลองพิมพ์ใหม่ 
+ถ้าไม่ขึ้นไป config db ตาม user / pass localhost ของเธอนะ
+แล้วลองพิมพ์ใหม่
 
 Edit by Kunchai.
 
 ##############################
 
-CLUB DATABASE SQL 
+CLUB DATABASE SQL
 
-INSERT INTO `club`(`club_id`, `club_name`, `club_secret_code`) VALUES 
+INSERT INTO `club`(`club_id`, `club_name`, `club_secret_code`) VALUES
 (1,"ชมรมอาสาพัฒนาชนบท","PN9CN"),
 (2,"ชมรมอนุรักษ์ทรัพยากรฯ","ANR4K"),
 (3,"ชมรมไฟฟ้าวิชาการ","E1E7C"),
@@ -86,8 +86,8 @@ INSERT INTO `club`(`club_id`, `club_name`, `club_secret_code`) VALUES
 (41,"KSIC","KS8IC"),
 (42,"KMUTT Innovation","1TNNV");
 
-ก้อปใส่ SQL ใน MySQL ของน้องนะครับ 
+ก้อปใส่ SQL ใน MySQL ของน้องนะครับ
 
-Editor Kunchai. 
+Editor Kunchai.
 
 ###################################

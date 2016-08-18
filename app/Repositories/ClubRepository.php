@@ -17,6 +17,15 @@ class ClubRepository implements ClubRepositoryInterface {
         $this->registrations = new Enroll();
     }
 
+
+    public function addClub($std_id,$club_id){
+        $enroll = new Enroll();
+        $enroll->std_id = $std_id;
+        $enroll->club_id = $club_id;
+        $enroll->save();
+        //return 'success';
+    }
+    
     public function getMemberAmount($club_id)
     {
         $members = $this->registrations->where('club_id',$club_id)->get();
@@ -62,9 +71,5 @@ class ClubRepository implements ClubRepositoryInterface {
         $data = json_decode($club_id,true);
         return array_get($data,'0.club_id');
     }
-
-
-
-
 
 }
