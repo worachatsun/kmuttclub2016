@@ -28,14 +28,17 @@ class ClubController extends ACMBaseController
 
     public function getDashboard(){
         $club_id = $this->club_id;
-        $MemberAmount = $this->ClubRepository->getMemberAmount($club_id);
+        $club = $this->ClubRepository->getClubInfo($club_id);
 
+        $member_amount = $this->ClubRepository->getMemberAmount($club_id);
         $members = $this->ClubRepository->getAllMembers($club_id);
 
         $content = array(
+            'club' => $club,
+            'member_amount' => $member_amount,
             'members' => $members
         );
-
+        // dd($content);
         return $this->theme->scope('club.dashboard',$content)->render();
     }
 
