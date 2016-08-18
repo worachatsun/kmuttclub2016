@@ -12,9 +12,18 @@ Route::get('/_debugbar/assets/javascript', [
 
 
 Route::group(['middleware' => ['web']], function () {
-    Route::controller('/','MainController');
+    Route::controller('auth','Auth\AuthController');
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::controller('/main','MainController');
+    });
+
 });
 
-Route::auth();
 
-Route::get('/home', 'HomeController@index');
+
+//Route::get('/home', 'HomeController@index');
+
+//Route::auth();
+
+//Route::get('/home', 'HomeController@index');
