@@ -17,3 +17,33 @@ Rounded Portlets
 	border-radius: 0px 0px 4px 4px !important;
 }
 */
+
+.organization .page-content {
+	padding-top: 20px;
+}
+
+.organization .page-header {
+	height: auto;
+}
+
+.login .content .create-account {
+	border-top: 0;
+}
+
+.login .input-icon .fa{
+	line-height: 20px;
+}
+
+.login .input-icon > .form-control {
+	height: 42px;
+}
+
+@media (max-width: 480px) {
+
+	.page-header .page-header-top .top-menu {
+    display: block;
+    clear: right;
+		margin-top: 13px; 
+  }
+
+}

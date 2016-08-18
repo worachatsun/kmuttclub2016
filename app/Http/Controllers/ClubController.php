@@ -23,10 +23,10 @@ class ClubController extends ACMBaseController
 
 
     public function getIndex(){
-        return $this->theme->scope('club.index')->render();
+        return $this->theme->layout('login')->scope('club.index')->render();
     }
 
-    public function getDashboard(){
+    public function getDashboard($chub_id){
         $club_id = $this->club_id;
         $MemberAmount = $this->ClubRepository->getMemberAmount($club_id);
 

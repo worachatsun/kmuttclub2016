@@ -18,24 +18,24 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('auth/login');
     }
+
     public function getLogin(){
         $theme = \Theme::uses('alchemist')->layout('default');
         return $theme->scope("auth.login")->render();
     }
-    public function postLogin(){
 
+    public function postLogin(){
 
         $error;
         if (Input::has('username')) {
-
 
             $username = Input::get('username');
             $password = Input::get('password');
             $user = User::where('username',$username)->first();
             if (isset($user)) {
-                //Auth::Login(['username'=>$username,'name'=>$user['name'],'sname'=>['sname']]);
+
                 Auth::Login($user);
-                //dd($user);
+
                 if ($username == "alchemist") {
                     return redirect('/view');
                 }
