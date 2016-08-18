@@ -9,7 +9,10 @@
 			</div>
 
 			<div class="row">
-				
+				<form class="" action="index.html" method="post">
+					<input type="text" name="club_id" value="">
+					<input type="submit" name="submit" value="submit">
+				</form>
 			</div>
 		</div>
 	</div>

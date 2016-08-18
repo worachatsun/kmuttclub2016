@@ -20,7 +20,7 @@ class ClubController extends ACMBaseController
         $this->club_secret_code = 'CTN5R';//waiting 4 get session
         $this->club_id = 22;//waiting 4 get session
     }
-    
+
 
     public function getIndex(){
         return $this->theme->scope('club.index')->render();
@@ -44,27 +44,32 @@ class ClubController extends ACMBaseController
 
     public function getRegis()
     {
+
         return $this->theme->scope('club.regis')->layout('blank')->render();
     } 
+
 
 
     public function postRegis()
     {
        $secret_code = Input::get('sc');
        if($secret_code == null){
-            return redirect('/club/regis');    
+            return redirect('/club/regis');
         }
        $this->ClubRepository->studentEnroll($secret_code,$this->club_secret_code);
        return $this->theme->scope('club.regis')->layout('blank')->render();
+
     }
 
     public function getAddclub(){
-        return $this->theme->scope('club')->layout('blank')->render();
+      $data = $this->user;
+      return $this->theme->scope('club',$data)->layout('blank')->render();
     }
 
     public function postAddclub(){
         $data = Input::all();
+        $user = $this->user;
         $this->ClubRepository->addClub(1,array_get($data,'club_id'));
-        return $this->theme->scope('club')->layout('blank')->render();
+        return redirect('student/dashboard');
     }
 }

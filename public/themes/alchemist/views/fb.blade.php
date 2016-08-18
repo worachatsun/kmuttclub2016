@@ -115,7 +115,7 @@
 							</div>
 						</div>
 						<div class="portlet-body form">
-							<form role="form" action="register" method="post">
+							<form role="form" action="main/register" method="post">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 								<div class="form-body">
 									<div class="form-group form-md-line-input has-error">

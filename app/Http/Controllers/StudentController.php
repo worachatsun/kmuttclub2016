@@ -18,7 +18,7 @@ class StudentController extends ACMBaseController
         $this->StudentRepository = $StudentRepository;
         $this->std_id = '58130500013';
     }
-    
+
 
     public function getIndex(){
         return $this->theme->scope('student.index')->render();
@@ -32,6 +32,6 @@ class StudentController extends ACMBaseController
         );
         return $this->theme->scope('student.dashboard',$content)->render();
     }
- 
+
 
 }

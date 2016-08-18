@@ -29,7 +29,7 @@
 
 			<div class="row">
 				<div class="col-md-12 std-regis-btn">
-					<center><button class="btn btn-lg green-meadow" type="button">REGISTER CLUB</button></center>
+					<center><a href="<?php echo url(""); ?>/club/addclub"><button class="btn btn-lg green-meadow" type="button">REGISTER CLUB</button></a></center>
 				</div>
 			</div>
 
