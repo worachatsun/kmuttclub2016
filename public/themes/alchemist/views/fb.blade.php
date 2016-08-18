@@ -16,10 +16,10 @@
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<li class="dropdown dropdown-user dropdown-dark">
 						<a class="btn yellow-gold" href="{{ url('auth/logout') }}">
-              <i class="icon-key"></i> Log Out 
+              <i class="icon-key"></i> Log Out
             </a>
 					<li>
-        </ul>						
+        </ul>
 			</div>
 			<!-- END TOP NAVIGATION MENU -->
 		</div>
@@ -52,7 +52,7 @@
 		<div class="container">
 			<!-- BEGIN PAGE TITLE -->
 			<div class="page-title">
-				<h1>Hello <small>{{ $name }}</small> <small>{{ $faculty }}</small></h1>
+				<h1><small>Hello</small> {{ $name }} <small>{{ $faculty }}</small></h1>
 
 			</div>
 			<!-- END PAGE TITLE -->

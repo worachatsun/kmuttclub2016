@@ -1,12 +1,12 @@
 <div class="logo">
     <img src="<?php echo url(""); ?>/themes/alchemist/assets/img/logo-big-white.gif" alt="">
 </div>
-	
+
 <div class="content">
 
 	<!-- BEGIN LOGIN FORM -->
 	{{ Form::open(array('url' => '/auth/login')) }}
-		
+
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
 			<span>
@@ -27,17 +27,13 @@
 				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password">
 			</div>
 		</div>
-        <div class="form-group">
-            <label class="checkbox">
-			<div class="checker"><span><input type="checkbox" name="remember" value="1"></span></div> Remember me </label>
-        </div>
 		<div class="form-actions">
 			<button type="submit" class="btn blue pull-right btn-block">
 			Login <i class="m-icon-swapright m-icon-white"></i>
 			</button>
 		</div>
-		
-		
+
+
 		<div class="create-account">
 		</div>
 
