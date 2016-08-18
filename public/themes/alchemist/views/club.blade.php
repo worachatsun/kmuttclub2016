@@ -17,7 +17,7 @@
         <li class="dropdown dropdown-user dropdown-dark">
           <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
           <img alt="" class="img-circle" src="../../assets/admin/layout3/img/avatar9.jpg">
-          <span class="username username-hide-mobile">กรรชัย</span>
+          <span class="username username-hide-mobile">{{ $name }}</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-default">
             <li>
@@ -70,7 +70,7 @@
   <div class="container">
     <!-- BEGIN PAGE TITLE -->
     <div class="page-title">
-      <h1>สวัสดี <small>กรรชัย สดหอม</small> <small>คณะเทคโนโลยีสารสนเทศ</small></h1>
+      <h1>Hello <small>{{ $name }}</small> <small>{{ $faculty }}</small></h1>
 
     </div>
     <!-- END PAGE TITLE -->

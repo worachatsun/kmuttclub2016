@@ -25,7 +25,7 @@ class RegisterController extends ACMBaseController
   public function postRegister(){
     $data = Input::all();
     $this->RegisterRepository->fb_email_regis(array_get($data,'fb'),array_get($data,'email'));
-    return $this->theme->scope('club')->layout('blank')->render();
+    return redirect('student/dashboard');
   }
 
 

@@ -17,6 +17,7 @@ Route::group(['middleware' => ['web']], function () {
       Route::controller('main','RegisterController');
       Route::controller('club','ClubController');
       Route::controller('organization', 'OrgController');
+      Route::controller('student','StudentController');
     });
 
 });
