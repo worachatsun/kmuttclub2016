@@ -23,6 +23,7 @@
 <?php echo HTML::style('themes/alchemist/assets/css/layout.css');?>
 <?php echo HTML::style('themes/alchemist/assets/css/default.css');?>
 <?php echo HTML::style('themes/alchemist/assets/css/custom.css');?>
+<?php echo HTML::style('themes/alchemist/assets/css/student.css');?>
 </head>
 
 <body class="page-md">

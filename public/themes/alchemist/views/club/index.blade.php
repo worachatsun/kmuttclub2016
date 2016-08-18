@@ -4,7 +4,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<h1>Club Enrollment</h1>
+					<h1>Club Index</h1>
 				</div>
 			</div>
 

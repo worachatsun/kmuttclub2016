@@ -13,8 +13,10 @@ Route::get('/_debugbar/assets/javascript', [
 
 Route::group(['middleware' => ['web']], function () {
     Route::controller('organization', 'OrgController');
+    Route::controller('club','ClubController');
+    Route::controller('student','StudentController');
     Route::controller('/','MainController');
-    Route::get('/enroll','MainController@getEnroll');
+    
 });
 
 
