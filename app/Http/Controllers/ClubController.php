@@ -28,41 +28,36 @@ class ClubController extends ACMBaseController
 
     public function getDashboard(){
         $club_id = $this->club_id;
-        $MemberAmount = $this->ClubRepository->getMemberAmount($club_id);
+        $club = $this->ClubRepository->getClubInfo($club_id);
 
+        $member_amount = $this->ClubRepository->getMemberAmount($club_id);
         $members = $this->ClubRepository->getAllMembers($club_id);
 
         $content = array(
+            'club' => $club,
+            'member_amount' => $member_amount,
             'members' => $members
         );
-
+        // dd($content);
         return $this->theme->scope('club.dashboard',$content)->render();
     }
 
     public function getRegis()
     {
-        return $this->theme->scope('club.regis')->render();
-    }
+
+        return $this->theme->scope('club.regis')->layout('blank')->render();
+    } 
+
 
 
     public function postRegis()
     {
-        //dd(Input::all());
-        //print_r($request);
-        // if($secret_code == null){
-        //     return redirect('/club/regis');
-        // }
-
-       // $this->ClubRepository->studentEnroll($secret_code,$request['sc']);
-
        $secret_code = Input::get('sc');
        if($secret_code == null){
             return redirect('/club/regis');
         }
-
        $this->ClubRepository->studentEnroll($secret_code,$this->club_secret_code);
-       return $this->theme->scope('club.regis')->render();
-
+       return $this->theme->scope('club.regis')->layout('blank')->render();
 
     }
 

@@ -26,6 +26,12 @@ class ClubRepository implements ClubRepositoryInterface {
         //return 'success';
     }
     
+    public function getClubInfo($club_id)
+    {
+        $club = $this->clubs->where('club_id',$club_id)->get()->first();
+        return $club;
+    }
+
     public function getMemberAmount($club_id)
     {
         $members = $this->registrations->where('club_id',$club_id)->get();
@@ -36,7 +42,7 @@ class ClubRepository implements ClubRepositoryInterface {
     {   
         $members = $this->registrations
         ->join('students','enrolls.std_id','=','students.std_id')
-        ->select('students.name','students.surname','students.faculty','students.facebook','students.email')
+        ->select('students.std_id','students.name','students.surname','students.faculty','students.facebook','students.email')
         ->where('club_id',$club_id)
         ->orderBy('faculty','asc')
         ->get();
@@ -71,5 +77,7 @@ class ClubRepository implements ClubRepositoryInterface {
         $data = json_decode($club_id,true);
         return array_get($data,'0.club_id');
     }
+
+
 
 }
