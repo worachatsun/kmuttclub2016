@@ -81,9 +81,6 @@
                         FACULTY
                       </th>
                       <th>
-                        MAJOR
-                      </th>
-                      <th>
                         EMAIL
                       </th>
                       <th>
@@ -105,9 +102,6 @@
                       </td>
                       <td>
                         {{ $member['faculty'] }}
-                      </td>
-                      <td>
-                        {{ $member['major'] }}
                       </td>
                       <td>
                         {{ $member['email'] }}
