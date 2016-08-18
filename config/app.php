@@ -158,6 +158,8 @@ return [
 
         App\Providers\RepositoryServiceProvider::class,
 
+        Adldap\Laravel\AdldapServiceProvider::class,
+        Adldap\Laravel\AdldapAuthServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
 
@@ -217,6 +219,8 @@ return [
         'HTML' => Collective\Html\HtmlFacade::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+        'Adldap' => Adldap\Laravel\Facades\Adldap::class,
 
     ],
 
