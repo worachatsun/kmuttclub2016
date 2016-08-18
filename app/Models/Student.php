@@ -8,8 +8,6 @@ class Student extends Model
 {
     protected $table = 'students';
     protected $primaryKey = 'std_id';
+    
 
-    public function clubs(){
-        return $this->belongToMany('App\Models\Club');
-    }
 }

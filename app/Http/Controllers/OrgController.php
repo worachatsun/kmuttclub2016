@@ -16,7 +16,8 @@ class OrgController extends ACMBaseController
 
     public function getIndex(){
         $collection = array(
-            'clubs' => $this->OrgRepository->getAllClubs()
+            'clubs' => $this->OrgRepository->getAllClubs(),
+            'user' => $this->user
         );
         return $this->theme->scope('organization.index',$collection)->render();
     }
@@ -28,7 +29,8 @@ class OrgController extends ACMBaseController
         }
 
         $collection = array(
-            'club_id' => $club_id,
+            'club' => $this->OrgRepository->getClubInfo($club_id),
+            'club_members' => $this->OrgRepository->getClubMembers($club_id)->count(),
             'members' => $this->OrgRepository->getClubMembers($club_id)
         );
 

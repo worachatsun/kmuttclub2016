@@ -8,8 +8,8 @@ class Enroll extends Model
 {
     protected $table = 'enrolls';
 
-    // public function students(){
-    //     return $this->belongToMany('App\Models\Student', 'enrolls', '');
-    // }
+    public function students(){
+        return $this->belongsTo('App\Models\Student','std_id','std_id');
+    }
     
 }

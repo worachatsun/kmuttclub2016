@@ -1,97 +1,77 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Input;
+use Auth;
+use Adldap;
 use Validator;
 use App\Http\Controllers\Controller;
-use App\Models\Wip8_admin;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    protected $loginPath = 'auth/login';
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function getLogout()
     {
-        $this->middleware('guest', ['except' => 'logout']);
-        if (\Auth::check())
-        {
-            return redirect()->intended('/dashboard');
-        }
+        Auth::logout();
+        return redirect('auth/login');
     }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+    public function getLogin(){
+        $theme = \Theme::uses('alchemist')->layout('default');
+        return $theme->scope("auth.login")->render();
     }
+    public function postLogin(){
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
 
-    public function postRegister(){
-        $admin = new Wip8_admin();
-        $admin->username = Input::get('username');
-        $admin->password = \Hash::make(Input::get('password'));
-        $admin->save();
-        return redirect()->to('auth/login');
-    }
+        $error;
+        if (Input::has('username')) {
 
-    public function login(){
-        if (\Auth::attempt(['username' => Input::get('username'),'password' => Input::get('password')]))
-        {
-          return redirect()->intended();
+
+            $username = Input::get('username');
+            $password = Input::get('password');
+            $user = User::where('username',$username)->first();
+            if (isset($user)) {
+                //Auth::Login(['username'=>$username,'name'=>$user['name'],'sname'=>['sname']]);
+                Auth::Login($user);
+                //dd($user);
+                if ($username == "alchemist") {
+                    return redirect('/view');
+                }
+                return redirect('/main');
+            }else{
+                if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)) {
+                    $user = Adldap::getDefaultProvider()->search()->where('uid', '=', $username)->first();
+                    if ($user) {
+                        $name = array_get($user, 'attributes.displayname.0').' '.array_get($user, 'attributes.givenname.0');
+                        $mail = array_get($user, 'attributes.mail.0');
+                        $faculty = explode("/", array_get($user, 'attributes.homedirectory.0') );
+                        $user = User::create([
+                            'username'  =>  $username,
+                            'name'      =>  $name,
+                            'email'     =>  $mail,
+                            'faculty'   =>  array_get($faculty, '2'),
+                        ]);
+                        Auth::Login($user);
+                        return redirect('/main');
+                    }
+                }else{
+                    $error['username']='รหัสนักศึกษาผิด';
+                }
+            }
         }else{
-          return redirect()->to('auth/login');
+            if (Input::has('username')) {
+                $error['username']='กรุณากรอกรหัสนักศึกษา';
+            }
+
         }
+        if (Input::has('password')) {
+                $error['password']='กรุณากรอกรหัสผ่าน';
+            }
+        $theme = \Theme::uses('alchemist')->layout('default');
+        return $theme->scope("auth.login")->render();
+
     }
 
 }

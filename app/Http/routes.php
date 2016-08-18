@@ -12,15 +12,25 @@ Route::get('/_debugbar/assets/javascript', [
 
 
 Route::group(['middleware' => ['web']], function () {
-    Route::controller('organization', 'OrgController');
-    Route::controller('club','ClubController');
-    Route::controller('student','StudentController');
-    Route::controller('/','MainController');
-    
+
+    Route::controller('auth','Auth\AuthController');
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::controller('organization', 'OrgController');
+        Route::controller('club','ClubController');
+        Route::controller('student','StudentController');
+        Route::controller('/','MainController');
+    });
+
 });
 
-
-Route::auth();
-
 Route::get('/home', 'HomeController@index');
+
+
+
+//Route::get('/home', 'HomeController@index');
+
+//Route::auth();
+
+//Route::get('/home', 'HomeController@index');
 
