@@ -28,7 +28,9 @@ class OrgRepository implements OrgRepositoryInterface{
     }
 
     public function getClubMembers($id){
-        $members = $this->registrations->where('club_id',$id)->get();
+        $members = $this->registrations
+                    ->join('students','enrolls.std_id','=','students.std_id')
+                    ->where('club_id',$id)->get();
         return $members;
     }
 
@@ -56,6 +58,13 @@ class OrgRepository implements OrgRepositoryInterface{
         }
         
         return $clubInfos;  
+    }
+    
+    // Club
+
+    public function getClubInfo($id){
+        $club = $this->clubs->where('club_id',$id)->get()->first();
+        return $club;
     }
 
 }

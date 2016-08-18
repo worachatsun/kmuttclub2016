@@ -1,34 +1,37 @@
 <div class="page-container">
-  <div class="page-head">
-    <div class="container">
-      <div class="page-title">
-        <h1>Dashboard <small>ORGANIZATION</small></h1>
-      </div>
-    </div>
-  </div>
   <div class="page-content">
     <div class="container">
       <ul class="page-breadcrumb breadcrumb">
         <li>
-          <a href="#">Home</a><i class="fa fa-circle"></i>
-        </li>
-        <li>
-          <a href="layout_blank_page.html">หน้าสอง</a>
+          <a href="{{ URL::to('organization/')  }}">หน้าแดชบอร์ด</a>
           <i class="fa fa-circle"></i>
         </li>
-        <li class="active">
-          หน้าสาม
-        </li>
       </ul>
-
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-xs-12">
+          <a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
+            <div class="visual">
+              <i class="fa fa-group fa-icon-medium"></i>
+            </div>
+            <div class="details">
+              <div class="number">
+                Dashboard
+              </div>
+              <div class="desc">
+                หน้าแดชบอร์ด
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <!-- BEGIN SAMPLE TABLE PORTLET-->
           <div class="portlet light">
             <div class="portlet-title">
               <div class="caption">
                 <i class="fa fa-cogs font-green-sharp"></i>
-                <span class="caption-subject font-green-sharp bold uppercase">Clubs #1</span>
+                <span class="caption-subject font-green-sharp bold uppercase">รายชื่อชมรมทั้งหมด</span>
               </div>
               <div class="tools">
                 <a href="javascript:;" class="collapse" data-original-title="" title="">
@@ -53,13 +56,10 @@
                         CLUB NAME
                       </th>
                       <th>
-                        CLUB SECRET CODE
-                      </th>
-                      <th>
                         MEMBER
                       </th>
                       <th>
-                        STATUS
+                        VIEW
                       </th>
                     </tr>
                   </thead>
@@ -70,18 +70,16 @@
                         {{ $key+1 }}
                       </td>
                       <td>
-                        <a href="/club/{{ $club['club_id'] }}">
+                        <a href="{{ URL::to('organization/club/' . $club['club_id'])  }}">
                           {{ array_get($club,'club_name',"Null") }}
                         </a>
-                      </td>
-                      <td>
-                        {{ $club['club_secret_code'] }}
                       </td>
                       <td>
                         {{ $club['amount_member'] }} คน
                       </td>
                       <td>
-                        <span class="bold theme-font">INCOMPLETE</span>
+                        <a href="javascript:;" class="btn default btn-xs green-stripe">
+													View </a>
                       </td>
                     </tr>
                     @endforeach
@@ -91,6 +89,36 @@
             </div>
           </div>
           <!-- END SAMPLE TABLE PORTLET-->
+        </div>
+        <div class="col-md-3">
+          <a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
+            <div class="visual">
+              <i class="fa fa-group fa-icon-medium"></i>
+            </div>
+            <div class="details">
+              <div class="number">
+                2321 คน
+              </div>
+              <div class="desc">
+                จำนวนนักศึกษาที่ลงทะเบียนสำเร็จ
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
+            <div class="visual">
+              <i class="fa fa-group fa-icon-medium"></i>
+            </div>
+            <div class="details">
+              <div class="number">
+                2321 คน
+              </div>
+              <div class="desc">
+                จำนวนนักศึกษาทั้งหมดในระบบ
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
