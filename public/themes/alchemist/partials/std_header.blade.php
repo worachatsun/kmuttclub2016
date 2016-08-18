@@ -9,9 +9,10 @@
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<li class="dropdown dropdown-user dropdown-dark">
 						<a class="btn yellow-gold" href="{{ url('auth/logout') }}">
-								<i class="icon-key"></i> Log Out 
-							</a>
-					<li>						
+              <i class="icon-key"></i> Log Out 
+            </a>
+					<li>
+        </ul>						
 			</div>
 			<!-- END TOP NAVIGATION MENU -->
 		</div>

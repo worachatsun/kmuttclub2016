@@ -15,29 +15,11 @@
 				<ul class="nav navbar-nav pull-right">
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<li class="dropdown dropdown-user dropdown-dark">
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<img src="<?php echo url(""); ?>/themes/alchemist/assets/img/avatar9.jpg" alt="logo" class="logo-default">
-						<span class="username username-hide-mobile">{{ $name }}</span>
-						</a>
-						<ul class="dropdown-menu dropdown-menu-default">
-							<li>
-								<a href="extra_profile.html">
-								<i class="icon-user"></i> My Profile </a>
-							</li>
-							<li>
-								<a href="page_calendar.html">
-								<i class="icon-calendar"></i> My Calendar </a>
-							</li>
-							<li class="divider">
-							</li>>
-							<li>
-								<a href="login.html">
-								<i class="icon-key"></i> Log Out </a>
-							</li>
-						</ul>
-					</li>
-					<!-- END USER LOGIN DROPDOWN -->
-				</ul>
+						<a class="btn yellow-gold" href="{{ url('auth/logout') }}">
+              <i class="icon-key"></i> Log Out 
+            </a>
+					<li>
+        </ul>						
 			</div>
 			<!-- END TOP NAVIGATION MENU -->
 		</div>
@@ -125,7 +107,7 @@
 									<div class="form-group form-md-line-input">
 										<input type="text" class="form-control" name="fb" id="form_control_1" placeholder="Enter your Facebook Name">
 										<label for="form_control_1">Facebook Name</label>
-										<span class="help-block">e.g. Kanison Suthum</span>
+										<span class="help-block">e.g. Kanison Sutham</span>
 									</div>
 									<div class="form-group form-md-line-input">
 										<input type="email" class="form-control" name="email" id="form_control_1" placeholder="Enter your Email">

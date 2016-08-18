@@ -21,7 +21,7 @@ class AuthController extends Controller
 
     public function getLogin(){
         $theme = \Theme::uses('alchemist')->layout('default');
-        return $theme->scope("auth.login")->render();
+        return $theme->layout('login')->scope("auth.login")->render();
     }
 
     public function postLogin(){
@@ -70,7 +70,7 @@ class AuthController extends Controller
                 $error['password']='กรุณากรอกรหัสผ่าน';
             }
         $theme = \Theme::uses('alchemist')->layout('default');
-        return $theme->scope("auth.login")->render();
+        return $theme->layout('login')->scope("auth.login")->render();
 
     }
 

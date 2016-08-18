@@ -38,6 +38,16 @@ Rounded Portlets
 	height: 42px;
 }
 
+.top-news .title {
+	font-weight: 100;
+}
+
+.top-news em {
+	text-align: left;
+	font-weight: 100;
+	font-size: 11px;
+}
+
 @media (max-width: 480px) {
 
 	.page-header .page-header-top .top-menu {
