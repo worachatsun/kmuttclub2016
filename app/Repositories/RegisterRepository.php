@@ -13,7 +13,7 @@ class RegisterRepository implements RegisterRepositoryInterface
 
   public function fb_email_regis($fb,$email,$detail_ldap){
     $student = new Student();
-    $name = explode( ' ', array_get($detail_ldap,'name'));
+    $name = explode(' ', array_get($detail_ldap,'name'));
     $student->std_id = array_get($detail_ldap,'username');
     $student->name = array_get($name,'0');
     $student->surname = array_get($name,'1');

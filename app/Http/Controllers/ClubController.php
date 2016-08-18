@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Repositories\ClubRepositoryInterface;
 use Illuminate\Http\Request;
 use Input;
+use Session;
 
 class ClubController extends ACMBaseController
 {
@@ -26,27 +27,33 @@ class ClubController extends ACMBaseController
         return $this->theme->layout('login')->scope('club.index')->render();
     }
 
-    public function getDashboard($chub_id){
+    public function getDashboard($club_id){
         $club_id = $this->club_id;
         $club = $this->ClubRepository->getClubInfo($club_id);
 
         $member_amount = $this->ClubRepository->getMemberAmount($club_id);
-        $members = $this->ClubRepository->getAllMembers($club_id);
-
+        $members = $this->Club2Repository->getAllMembers($club_id);
         $content = array(
             'club' => $club,
             'member_amount' => $member_amount,
             'members' => $members
         );
-        // dd($content);
         return $this->theme->scope('club.dashboard',$content)->render();
+      }else {
+        return $this->theme->scope('club.index')->render();
+      }
+    }
+
+    public function getClublogout(){
+        Session::forget('club_id');
+        return redirect('club');
     }
 
     public function getRegis()
     {
 
         return $this->theme->scope('club.regis')->layout('blank')->render();
-    } 
+    }
 
 
 
