@@ -15,7 +15,7 @@ class Regis extends Migration
       Schema::create('enrolls', function (Blueprint $table) {
         $table->increments('id');
         $table->bigInteger('std_id');
-        $table->string('club_id', 100)->unique();
+        $table->string('club_id', 100);
         $table->timestamps();
         $table->index('id');
       });

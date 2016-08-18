@@ -12,6 +12,8 @@ Route::get('/_debugbar/assets/javascript', [
 
 
 Route::group(['middleware' => ['web']], function () {
+    Route::controller('club','ClubController');
+    Route::controller('regis','RegisterController');
     Route::controller('/','MainController');
 });
 
