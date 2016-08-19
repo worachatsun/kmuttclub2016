@@ -39,9 +39,6 @@ class ClubController extends ACMBaseController
             'members' => $members
         );
         return $this->theme->scope('club.dashboard',$content)->render();
-      }else {
-        return $this->theme->scope('club.index')->render();
-      }
     }
 
     public function getClublogout(){
