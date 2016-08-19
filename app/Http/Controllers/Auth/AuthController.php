@@ -39,7 +39,7 @@ class AuthController extends Controller
                 if ($username == "alchemist") {
                     return redirect('/view');
                 }
-                return redirect('/student/dashboard');
+                return redirect('/main');
             }else{
                 if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)) {
                     $user = Adldap::getDefaultProvider()->search()->where('uid', '=', $username)->first();
