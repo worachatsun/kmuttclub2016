@@ -27,7 +27,7 @@ class ClubController extends ACMBaseController
         return $this->theme->layout('login')->scope('club.index')->render();
     }
 
-    public function getDashboard($club_id){
+    public function getDashboard($chub_id){
         $club_id = $this->club_id;
         $club = $this->ClubRepository->getClubInfo($club_id);
 

@@ -16,6 +16,7 @@ class StudentController extends ACMBaseController
     public function __construct(StudentRepositoryInterface $StudentRepository){
         parent::__construct();
         $this->StudentRepository = $StudentRepository;
+        $this->std_id = '58130500009';
     }
 
 
@@ -32,7 +33,6 @@ class StudentController extends ACMBaseController
 
         $std_id = array_get($this->user,'username');
         $clubs = $this->StudentRepository->getAllClubs($std_id);
-        // dd($clubs);
         $content = array(
             'clubs' => $clubs
         );
