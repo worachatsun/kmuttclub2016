@@ -29,7 +29,8 @@ class StudentController extends ACMBaseController
     }
 
     public function getDashboard(){
-        $std_id = $this->user['attributes']['username'];
+
+        $std_id = array_get($this->user,'username');
         $clubs = $this->StudentRepository->getAllClubs($std_id);
         // dd($clubs);
         $content = array(

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Repositories\ClubRepositoryInterface;
 use Illuminate\Http\Request;
 use Input;
+use Session;
 
 class ClubController extends ACMBaseController
 {
@@ -31,22 +32,25 @@ class ClubController extends ACMBaseController
         $club = $this->ClubRepository->getClubInfo($club_id);
 
         $member_amount = $this->ClubRepository->getMemberAmount($club_id);
-        $members = $this->ClubRepository->getAllMembers($club_id);
-
+        $members = $this->Club2Repository->getAllMembers($club_id);
         $content = array(
             'club' => $club,
             'member_amount' => $member_amount,
             'members' => $members
         );
-        // dd($content);
         return $this->theme->scope('club.dashboard',$content)->render();
+    }
+
+    public function getClublogout(){
+        Session::forget('club_id');
+        return redirect('club');
     }
 
     public function getRegis()
     {
 
         return $this->theme->scope('club.regis')->layout('blank')->render();
-    } 
+    }
 
 
 
@@ -68,8 +72,10 @@ class ClubController extends ACMBaseController
 
     public function postAddclub(){
         $data = Input::all();
-        $user = $this->user;
-        $this->ClubRepository->addClub($user['attributes']['username'],array_get($data,'club_id'));
+
+        $std_id = array_get($this->user,'username');
+        $club_id = $this->ClubRepository->getClubNumber(array_get($data,'club_id'));
+        $this->ClubRepository->addClub($std_id,array_get($club_id,'0.club_id'));
         return redirect('student/dashboard');
     }
 }

@@ -19,11 +19,11 @@ class MainController extends ACMBaseController
     public function getEnroll(){
         return $this->theme->scope('home.enrollment')->render();
     }
-    
+
     public function getIndex(){
         //dd(Adldap::getConnection()->showErrors());
-
+fmskfdm
         return $this->theme->scope('home.index')->render();
     }
-    
+
 }
