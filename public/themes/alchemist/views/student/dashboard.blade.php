@@ -8,7 +8,16 @@
 				</div>
 			</div>
 
-			
+			@if (count($clubs) === 0)
+				<div class="row">
+					<div class="note note-success note-bordered">
+						<h4 class="block">How to Register Club</h4>
+						<p>
+							First Visit about club and click in "Register Club" and put Club Secret Code in to the field.
+						</p>
+					</div>
+				</div>
+			@else
 				@foreach($clubs as $club)
 				<div class="row">
 					<div class="top-news margin-top-10 col-xs-12">
@@ -23,6 +32,7 @@
 					</div>
 				</div>
 				@endforeach
+				@endif
 
 			<div class="row">
 				<div class="col-md-12 std-regis-btn">

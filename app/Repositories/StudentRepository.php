@@ -18,7 +18,7 @@ class StudentRepository implements StudentRepositoryInterface {
     }
 
     public function getAllClubs($std_id)
-    {   
+    {
         $clubs = $this->registrations
         ->join('clubs','enrolls.club_id','=','clubs.club_id')
         ->where('std_id',$std_id)
@@ -27,4 +27,4 @@ class StudentRepository implements StudentRepositoryInterface {
         $data = json_decode($clubs,true);
         return $data;
     }
-
+}
