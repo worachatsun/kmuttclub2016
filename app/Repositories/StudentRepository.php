@@ -19,12 +19,20 @@ class StudentRepository implements StudentRepositoryInterface {
 
     public function getAllClubs($std_id)
     {
-        $clubs = $this->registrations
+        $enrolls = $this->registrations
         ->join('clubs','enrolls.club_id','=','clubs.club_id')
         ->where('std_id',$std_id)
         ->get();
 
-        $data = json_decode($clubs,true);
+        $data = json_decode($enrolls,true);
         return $data;
     }
+
+    public function deleteMyClub($std_id,$club_id){
+        $enroll = $this->registrations
+        ->where('std_id',$std_id)
+        ->where('club_id',$club_id)
+        ->delete();
+    }
+
 }

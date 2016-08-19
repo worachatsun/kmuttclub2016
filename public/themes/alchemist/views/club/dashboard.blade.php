@@ -50,7 +50,6 @@
 
       <div class="row">
         <div class="col-md-12">
-          <!-- BEGIN SAMPLE TABLE PORTLET-->
           <div class="portlet light">
             <div class="portlet-title">
               <div class="caption">
@@ -120,7 +119,6 @@
               </div>
             </div>
           </div>
-          <!-- END SAMPLE TABLE PORTLET-->
         </div>
 
 

@@ -29,6 +29,11 @@
 								<i class="fa fa-tags"></i>
 								สมัครเมื่อ {{ $club['created_at'] }} </em>
 						</div>
+						<form action="deletingclub" method="POST">
+							<input type="hidden" name="club_id" value="{{ $club['club_id'] }}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<button class="btn btn-block blue" type="submit">X</button>
+						</form>
 					</div>
 				</div>
 				@endforeach

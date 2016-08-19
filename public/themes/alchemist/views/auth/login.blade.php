@@ -4,7 +4,6 @@
 
 <div class="content">
 
-	<!-- BEGIN LOGIN FORM -->
 	{{ Form::open(array('url' => '/auth/login')) }}
 
 		<div class="alert alert-danger display-hide">
@@ -13,7 +12,6 @@
 			Enter any username and password. </span>
 		</div>
 		<div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">
-			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 			<label class="control-label visible-ie8 visible-ie9">Username</label>
 			<div class="input-icon">
 				<i class="fa fa-user"></i>
@@ -38,5 +36,4 @@
 		</div>
 
 	{{ Form::close() }}
-	<!-- END LOGIN FORM -->
 </div>

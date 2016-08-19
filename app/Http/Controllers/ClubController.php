@@ -18,8 +18,8 @@ class ClubController extends ACMBaseController
     public function __construct(ClubRepositoryInterface $ClubRepository){
         parent::__construct();
         $this->ClubRepository = $ClubRepository;
-        $this->club_secret_code = 'CTN5R';//waiting 4 get session
-        $this->club_id = 22;//waiting 4 get session
+        $this->club_secret_code = 'CTN5R';
+        $this->club_id = 22;
     }
 
 
