@@ -9,7 +9,7 @@ body.page-md {
 }
 
 /******
-General 
+General
 ******/
 /* Theme Font Color */
 .theme-font {
@@ -39,7 +39,7 @@ General
 }
 
 /******
-Page Header 
+Page Header
 ******/
 .page-header {
   background-color: #fff;
@@ -372,7 +372,7 @@ Page Header
 }
 
 /******
-Page Footer 
+Page Footer
 ******/
 .page-prefooter {
   background: #48525e;
@@ -432,6 +432,10 @@ Page Footer
 .page-footer {
   background: #3b434c;
   color: #a2abb7;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
 }
 
 /* Scroll Top */
