@@ -6,6 +6,7 @@ use Input;
 use Auth;
 use Adldap;
 use Validator;
+use Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -33,13 +34,10 @@ class AuthController extends Controller
             $password = Input::get('password');
             $user = User::where('username',$username)->first();
             if (isset($user)) {
-
+              if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)) {
                 Auth::Login($user);
-
-                if ($username == "alchemist") {
-                    return redirect('/view');
-                }
-                return redirect('/main');
+                return redirect('/student/dashboard');
+              }
             }else{
                 if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)) {
                     $user = Adldap::getDefaultProvider()->search()->where('uid', '=', $username)->first();
@@ -70,7 +68,7 @@ class AuthController extends Controller
                 $error['password']='กรุณากรอกรหัสผ่าน';
             }
         $theme = \Theme::uses('alchemist')->layout('default');
-        return $theme->layout('login')->scope("auth.login")->render();
+        return $theme->layout('login')->scope("auth.login",$error)->render();
 
     }
 

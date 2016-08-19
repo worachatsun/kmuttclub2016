@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Input;
+use Validator;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Repositories\RegisterRepositoryInterface;
@@ -23,10 +24,27 @@ class RegisterController extends ACMBaseController
   }
 
   public function postRegister(){
-    $data = Input::all();
     $user = $this->user;
-    $this->RegisterRepository->fb_email_regis(array_get($data,'fb'),array_get($data,'email'),$user);
-    return redirect('student/dashboard');
+    $data = Input::all();
+    $rules = array(
+        'fb' => 'required',
+        'email' => 'required'
+    );
+    $messages = array(
+        'fb.required' => 'Facebook field is required.',
+        'email.required'  => 'Email field is required.'
+    );
+
+
+    $validator = Validator::make($data,$rules,$messages);
+
+    if ($validator->fails()) {
+        $messages = $validator->messages();
+        return redirect('main')->withErrors($validator);
+    } else {
+        $redi = $this->RegisterRepository->fb_email_regis($data,$user);
+        return redirect('student/dashboard');
+    }
   }
 
 

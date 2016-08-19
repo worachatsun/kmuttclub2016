@@ -86,6 +86,13 @@
 										<span class="help-block">e.g. alchemist@gmail.com</span>
 									</div>
 								</div>
+								@if ($errors->has())
+					        <div class="alert alert-danger">
+					            @foreach ($errors->all() as $error)
+					                {{ $error }}<br>
+					            @endforeach
+					        </div>
+				        @endif
 								<div class="form-actions noborder">
 									<center>
 										<button type="submit" class="btn blue">Submit</button>
