@@ -6,6 +6,7 @@ use Input;
 use Auth;
 use Adldap;
 use Validator;
+use App\Models\ 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -39,7 +40,7 @@ class AuthController extends Controller
                 if ($username == "alchemist") {
                     return redirect('/view');
                 }
-                return redirect('/main');
+                return redirect('/student/dashboard');
             }else{
                 if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)) {
                     $user = Adldap::getDefaultProvider()->search()->where('uid', '=', $username)->first();
