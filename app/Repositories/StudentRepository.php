@@ -20,7 +20,7 @@ class StudentRepository implements StudentRepositoryInterface {
     public function getAllClubs($std_id)
     {
         $clubs = $this->registrations
-        ->join('clubs','clubs.club_id','=','enrolls.club_id')
+        ->join('clubs','clubs.club_secret_code','=','enrolls.club_id')
         ->where('std_id',$std_id)
         ->get();
 
