@@ -40,8 +40,8 @@ class Handler extends ExceptionHandler
         Log::error($e,[
             'header' => Request::header(),
             'server' => Request::server(),
-            'url' => Request::url(),
-            'body' => Request::all()
+            'url'    => Request::url(),
+            'body'   => Request::all()
         ]);
         //
         // //$error = array();
