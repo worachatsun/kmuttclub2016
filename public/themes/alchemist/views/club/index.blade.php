@@ -6,7 +6,7 @@
 <div class="content">
 
 	<!-- BEGIN LOGIN FORM -->
-	{{ Form::open(array('url' => 'club/dashboard','method'=>'get')) }}
+	{{ Form::open(array('url' => 'club/dashboard')) }}
 
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
