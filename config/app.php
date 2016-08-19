@@ -165,6 +165,7 @@ return [
 
         'Teepluss\Theme\ThemeServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
 
 
     ],
@@ -221,6 +222,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
         'Adldap' => Adldap\Laravel\Facades\Adldap::class,
+        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
 
     ],
 
