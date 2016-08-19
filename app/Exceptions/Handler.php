@@ -36,26 +36,26 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        //dd(Request::server());
+        // //dd(Request::server());
         Log::error($e,[
             'header' => Request::header(),
             'server' => Request::server(),
             'url' => Request::url(),
             'body' => Request::all()
         ]);
-
-        //$error = array();
-        //     'error' => $e,
-        //     'header' => Request::header(),
-        //     'server' => Request::server(),
-        //     'url' => Request::url(),
-        //     'body' => Request::all()
-        // );
-
-        //if ($this->shouldReport($e)) {
-        //    dd("hello");
-            app('sentry')->captureException($e);
-        //}
+        //
+        // //$error = array();
+        // //     'error' => $e,
+        // //     'header' => Request::header(),
+        // //     'server' => Request::server(),
+        // //     'url' => Request::url(),
+        // //     'body' => Request::all()
+        // // );
+        //
+        // //if ($this->shouldReport($e)) {
+        // //    dd("hello");
+        //     app('sentry')->captureException($e);
+        // //}
         return parent::report($e);
     }
 
