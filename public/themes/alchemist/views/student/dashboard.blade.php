@@ -8,28 +8,25 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="table-scrollable table-scrollable-borderless">
-					<table class="table table-hover table-light center-club-table">
-						<thead>
-							<tr class="uppercase">
-								<th>รายชื่อชมรมที่ลงทะเบียน</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								@foreach($clubs as $club)
-									<td>{{ $club['club_name'] }}</td>
-								@endforeach
-							</tr>
-						</tbody>
-					</table>
+			
+				@foreach($clubs as $club)
+				<div class="row">
+					<div class="top-news margin-top-10 col-xs-12">
+						<div class="btn yellow-gold btn-block">
+							<span class="title">
+								{{ $club['club_name'] }}
+							</span>
+							<em>
+								<i class="fa fa-tags"></i>
+								สมัครเมื่อ {{ $club['created_at'] }} </em>
+						</div>
+					</div>
 				</div>
-			</div>
+				@endforeach
 
 			<div class="row">
 				<div class="col-md-12 std-regis-btn">
-					<center><button class="btn btn-lg green-meadow" type="button">REGISTER CLUB</button></center>
+					<center><a href="<?php echo url(""); ?>/club/addclub"><button class="btn btn-block blue" type="button">REGISTER CLUB</button></a></center>
 				</div>
 			</div>
 

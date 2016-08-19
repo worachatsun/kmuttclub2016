@@ -1,5 +1,10 @@
 .std-regis-btn {
-  margin-top: 20px;
+  padding: 10px 15px;
+}
+
+.std-regis-btn .btn{
+  padding: 12px 15px;
+  font-size: 15px;
 }
 
 .center-club-table, .center-club-table th, .center-club-table td  {

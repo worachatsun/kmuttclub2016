@@ -1,38 +1,61 @@
 <div class="page-container">
   <div class="page-content">
     <div class="container">
-      <ul class="page-breadcrumb breadcrumb">
-        <li>
-          <a href="{{ URL::to('organization/')  }}">หน้าแดชบอร์ด</a>
-          <i class="fa fa-circle"></i>
-        </li>
-      </ul>
-      {{ $user }}
       <div class="row">
-        <div class="col-md-12 col-xs-12">
-          <a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
+        <div class="col-md-6 col-xs-12">
+          <div class="dashboard-stat dashboard-stat-light yellow-gold">
             <div class="visual">
               <i class="fa fa-group fa-icon-medium"></i>
             </div>
             <div class="details">
               <div class="number">
-                Dashboard
+                DASHBOARD
               </div>
               <div class="desc">
-                หน้าแดชบอร์ด
+                KMUTT Club 2016
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-xs-6">
+          <a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
+            <div class="visual">
+              <i class="fa fa-group fa-icon-medium"></i>
+            </div>
+            <div class="details">
+              <div class="number">
+                2321
+              </div>
+              <div class="desc">
+                registed students
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-xs-6">
+          <a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
+            <div class="visual">
+              <i class="fa fa-group fa-icon-medium"></i>
+            </div>
+            <div class="details">
+              <div class="number">
+                2321
+              </div>
+              <div class="desc">
+                total students
               </div>
             </div>
           </a>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <!-- BEGIN SAMPLE TABLE PORTLET-->
           <div class="portlet light">
             <div class="portlet-title">
               <div class="caption">
-                <i class="fa fa-cogs font-green-sharp"></i>
-                <span class="caption-subject font-green-sharp bold uppercase">รายชื่อชมรมทั้งหมด</span>
+                <i class="fa fa-cogs font-yellow-gold"></i>
+                <span class="caption-subject font-yellow-gold bold uppercase">รายชื่อชมรมทั้งหมด</span>
               </div>
               <div class="tools">
                 <a href="javascript:;" class="collapse" data-original-title="" title="">
@@ -57,10 +80,13 @@
                         CLUB NAME
                       </th>
                       <th>
+                        SECRET CODE
+                      </th>
+                      <th>
                         MEMBER
                       </th>
                       <th>
-                        VIEW
+                        
                       </th>
                     </tr>
                   </thead>
@@ -76,10 +102,13 @@
                         </a>
                       </td>
                       <td>
-                        {{ $club['amount_member'] }} คน
+                        {{ $club['club_secret_code'] }}
                       </td>
                       <td>
-                        <a href="javascript:;" class="btn default btn-xs green-stripe">
+                        {{ $club['amount_member'] }}
+                      </td>
+                      <td>
+                        <a href="{{ URL::to('organization/club/' . $club['club_id'])  }}" class="btn default btn-xs yellow-gold-stripe">
 													View </a>
                       </td>
                     </tr>
@@ -90,36 +119,6 @@
             </div>
           </div>
           <!-- END SAMPLE TABLE PORTLET-->
-        </div>
-        <div class="col-md-3">
-          <a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
-            <div class="visual">
-              <i class="fa fa-group fa-icon-medium"></i>
-            </div>
-            <div class="details">
-              <div class="number">
-                2321 คน
-              </div>
-              <div class="desc">
-                จำนวนนักศึกษาที่ลงทะเบียนสำเร็จ
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
-            <div class="visual">
-              <i class="fa fa-group fa-icon-medium"></i>
-            </div>
-            <div class="details">
-              <div class="number">
-                2321 คน
-              </div>
-              <div class="desc">
-                จำนวนนักศึกษาทั้งหมดในระบบ
-              </div>
-            </div>
-          </a>
         </div>
       </div>
     </div>

@@ -16,12 +16,17 @@ class StudentController extends ACMBaseController
     public function __construct(StudentRepositoryInterface $StudentRepository){
         parent::__construct();
         $this->StudentRepository = $StudentRepository;
-        $this->std_id = '58130500013';
+        $this->std_id = '58130500009';
     }
-    
+
 
     public function getIndex(){
-        return $this->theme->scope('student.index')->render();
+        $std_id = $this->std_id;
+        $clubs = $this->StudentRepository->getAllClubs($std_id);
+        $content = array(
+            'clubs' => $clubs
+        );
+        return $this->theme->layout('std')->scope('student.dashboard',$content)->render();
     }
 
     public function getDashboard(){
@@ -30,8 +35,8 @@ class StudentController extends ACMBaseController
         $content = array(
             'clubs' => $clubs
         );
-        return $this->theme->scope('student.dashboard',$content)->render();
+        return $this->theme->layout('std')->scope('student.dashboard',$content)->render();
     }
- 
+
 
 }

@@ -11878,7 +11878,7 @@ Yellow Gold
 
 /* Button Strip */
 .btn.yellow-gold-stripe {
-  border-left: 3px solid #E87E04;
+  border-left: 3px solid #E87E04 !important;
 }
 
 /* Portlet */

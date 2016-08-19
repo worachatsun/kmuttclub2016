@@ -1,46 +1,53 @@
 <div class="page-container">
   <div class="page-content">
     <div class="container">
-      <ul class="page-breadcrumb breadcrumb">
-        <li>
-          <a href="{{ URL::to('organization/')  }}">หน้าแดชบอร์ด</a>
-          <i class="fa fa-circle"></i>
-        </li>
-        <li class="active">
-          {{ $club['club_name'] }}
-        </li>
-      </ul>
       <div class="row">
-        <div class="col-md-8 col-xs-12">
-					<a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
+        <div class="col-md-6 col-xs-12">
+					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
-						<i class="fa fa-group fa-icon-medium"></i>
+						<i class="fa fa-comments fa-icon-medium"></i>
 					</div>
 					<div class="details">
 						<div class="number">
 							 {{ $club['club_name'] }}
 						</div>
 						<div class="desc">
-							 ชื่อชมรม
+							 Club Student
 						</div>
 					</div>
 					</a>
 				</div>
         <div class="col-md-4 col-xs-12">
-					<a class="dashboard-stat dashboard-stat-light green-haze" href="javascript:;">
+					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
 						<i class="fa fa-group fa-icon-medium"></i>
 					</div>
 					<div class="details">
 						<div class="number">
-							 {{ $club_members }} คน
+							 {{ $club_members }}
 						</div>
 						<div class="desc">
-							 จำนวนคนสมัครทั้งหมด
+							 Total Student
 						</div>
 					</div>
 					</a>
 				</div>
+        <div class="col-md-2 col-xs-12">
+					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
+					<div class="visual">
+						<i class="fa fa-group fa-icon-medium"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+							 Register
+						</div>
+						<div class="desc">
+							 student
+						</div>
+					</div>
+					</a>
+				</div>
+        
       </div>
 
       <div class="row">
@@ -49,8 +56,8 @@
           <div class="portlet light">
             <div class="portlet-title">
               <div class="caption">
-                <i class="fa fa-cogs font-green-sharp"></i>
-                <span class="caption-subject font-green-sharp bold uppercase">รายชื่อสมาชิกชมรม</span>
+                <i class="fa fa-cogs font-yellow-gold"></i>
+                <span class="caption-subject font-yellow-gold bold uppercase">List Student</span>
               </div>
               <div class="tools">
                 <a href="javascript:;" class="collapse" data-original-title="" title="">
@@ -81,9 +88,6 @@
                         FACULTY
                       </th>
                       <th>
-                        MAJOR
-                      </th>
-                      <th>
                         EMAIL
                       </th>
                       <th>
@@ -107,13 +111,10 @@
                         {{ $member['faculty'] }}
                       </td>
                       <td>
-                        {{ $member['major'] }}
-                      </td>
-                      <td>
                         {{ $member['email'] }}
                       </td>
                       <td>
-                        <a href="{{ $member['facebook'] }}" class="btn default btn-xs green-stripe">
+                        <a href="{{ $member['facebook'] }}" class="btn default btn-xs yellow-gold-stripe">
 													GO TO FACEBOOK
                         </a>
                       </td>

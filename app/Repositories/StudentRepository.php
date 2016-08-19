@@ -21,7 +21,6 @@ class StudentRepository implements StudentRepositoryInterface {
     {   
         $clubs = $this->registrations
         ->join('clubs','enrolls.club_id','=','clubs.club_id')
-        ->select('clubs.club_name')
         ->where('std_id',$std_id)
         ->get();
 

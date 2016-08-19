@@ -20,59 +20,56 @@ class ClubController extends ACMBaseController
         $this->club_secret_code = 'CTN5R';//waiting 4 get session
         $this->club_id = 22;//waiting 4 get session
     }
-    
+
 
     public function getIndex(){
-        return $this->theme->scope('club.index')->render();
+        return $this->theme->layout('login')->scope('club.index')->render();
     }
 
-    public function getDashboard(){
+    public function getDashboard($chub_id){
         $club_id = $this->club_id;
-        $MemberAmount = $this->ClubRepository->getMemberAmount($club_id);
+        $club = $this->ClubRepository->getClubInfo($club_id);
 
+        $member_amount = $this->ClubRepository->getMemberAmount($club_id);
         $members = $this->ClubRepository->getAllMembers($club_id);
 
         $content = array(
+            'club' => $club,
+            'member_amount' => $member_amount,
             'members' => $members
         );
-
+        // dd($content);
         return $this->theme->scope('club.dashboard',$content)->render();
     }
 
     public function getRegis()
     {
-        return $this->theme->scope('club.regis')->render();
+
+        return $this->theme->scope('club.regis')->layout('blank')->render();
     } 
+
 
 
     public function postRegis()
     {
-        //dd(Input::all());
-        //print_r($request);
-        // if($secret_code == null){
-        //     return redirect('/club/regis');    
-        // }
-        
-       // $this->ClubRepository->studentEnroll($secret_code,$request['sc']);
-
        $secret_code = Input::get('sc');
        if($secret_code == null){
-            return redirect('/club/regis');    
+            return redirect('/club/regis');
         }
-        
        $this->ClubRepository->studentEnroll($secret_code,$this->club_secret_code);
-       return $this->theme->scope('club.regis')->render();
-       
+       return $this->theme->scope('club.regis')->layout('blank')->render();
 
     }
 
     public function getAddclub(){
-        return $this->theme->scope('club')->layout('blank')->render();
+      $data = $this->user;
+      return $this->theme->scope('club',$data)->layout('blank')->render();
     }
 
     public function postAddclub(){
         $data = Input::all();
+        $user = $this->user;
         $this->ClubRepository->addClub(1,array_get($data,'club_id'));
-        return $this->theme->scope('club')->layout('blank')->render();
+        return redirect('student/dashboard');
     }
 }

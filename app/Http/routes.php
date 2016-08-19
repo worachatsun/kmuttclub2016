@@ -9,25 +9,18 @@ Route::get('/_debugbar/assets/javascript', [
     'uses' => '\Barryvdh\Debugbar\Controllers\AssetController@js'
 ]);
 
-
-
 Route::group(['middleware' => ['web']], function () {
 
     Route::controller('auth','Auth\AuthController');
 
     Route::group(['middleware' => ['auth']], function () {
+      Route::controller('main','RegisterController');
       Route::controller('club','ClubController');
-      Route::controller('regis','RegisterController');
-        Route::controller('organization', 'OrgController');
-        Route::controller('club','ClubController');
-        Route::controller('student','StudentController');
-        Route::controller('/','MainController');
+      Route::controller('organization', 'OrgController');
+      Route::controller('student','StudentController');
     });
 
-
 });
-
-Route::get('/home', 'HomeController@index');
 
 
 
