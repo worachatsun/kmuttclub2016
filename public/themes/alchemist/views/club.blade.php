@@ -69,7 +69,7 @@
 							</div>
 						</div>
             <div class="portlet-body form">
-              <form role="form" action="addclub" method="post">
+              <form role="form" action="confirmclub" method="post">
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                 <div class="form-body col-md-6 col-md-offset-3">
                     <div class="form-group form-md-line-input has-info">
