@@ -16,10 +16,7 @@
 							<span class="title">
 								{{ $club['club_name'] }}
 							</span>
-							<em>
-								<i class="fa fa-tags"></i>
-								สมัครเมื่อ {{ $club['created_at'] }} </em>
-						</div>
+							</div>
 					</div>
 				</div>
 				@endforeach

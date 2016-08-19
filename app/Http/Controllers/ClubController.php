@@ -26,7 +26,7 @@ class ClubController extends ACMBaseController
         return $this->theme->layout('login')->scope('club.index')->render();
     }
 
-    public function getDashboard($chub_id){
+    public function getDashboard($club_id){
         $club_id = $this->club_id;
         $club = $this->ClubRepository->getClubInfo($club_id);
 
@@ -69,7 +69,7 @@ class ClubController extends ACMBaseController
     public function postAddclub(){
         $data = Input::all();
         $user = $this->user;
-        $this->ClubRepository->addClub(1,array_get($data,'club_id'));
+        $this->ClubRepository->addClub($user['attributes']['username'],array_get($data,'club_id'));
         return redirect('student/dashboard');
     }
 }
