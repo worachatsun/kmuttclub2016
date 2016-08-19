@@ -6,7 +6,7 @@ use App\Models\Enroll;
 use App\Models\Club;
 
 class StudentRepository implements StudentRepositoryInterface {
-    
+
     protected $clubs;
     protected $studentAccounts;
     protected $registrations;
@@ -18,9 +18,9 @@ class StudentRepository implements StudentRepositoryInterface {
     }
 
     public function getAllClubs($std_id)
-    {   
+    {
         $clubs = $this->registrations
-        ->join('clubs','enrolls.club_id','=','clubs.club_id')
+        ->join('clubs','clubs.club_id','=','enrolls.club_id')
         ->where('std_id',$std_id)
         ->get();
 

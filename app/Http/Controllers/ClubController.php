@@ -72,8 +72,8 @@ class ClubController extends ACMBaseController
 
     public function postAddclub(){
         $data = Input::all();
-        $user = $this->user;
-        $this->ClubRepository->addClub(1,array_get($data,'club_id'));
+        $std_id = array_get($this->user,'username');
+        $this->ClubRepository->addClub($std_id,array_get($data,'club_id'));
         return redirect('student/dashboard');
     }
 }
