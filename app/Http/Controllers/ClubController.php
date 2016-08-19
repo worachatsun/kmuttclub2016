@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Repositories\ClubRepositoryInterface;
-use Illuminate\Http\Request;
 use Input;
 use Session;
+use Validator;
+use Illuminate\Http\Request;
+use App\Repositories\ClubRepositoryInterface;
 
 class ClubController extends ACMBaseController
 {
@@ -81,10 +81,26 @@ class ClubController extends ACMBaseController
     }
 
     public function postAddclub(){
-        $data = Input::all();
+      $data = Input::all();
+      $rules = array(
+          'club_id' => 'required|min:5|max:5'
+      );
+      $messages = array(
+          'club_id.required' => 'Club ID field is required.',
+          'club_id.min' => 'Club ID field has to be 6 chars long.',
+          'club_id.max' => 'Club ID field has to be 6 chars long.'
+      );
+
+      $validator = Validator::make($data,$rules,$messages);
+
+      if ($validator->fails()) {
+        $messages = $validator->messages();
+        return redirect('club/addclub')->withErrors($validator);
+      } else {
         $std_id = array_get($this->user,'username');
         $club_id = $this->ClubRepository->getClubNumber(array_get($data,'club_id'));
         $this->ClubRepository->addClub($std_id,array_get($club_id,'0.club_id'));
         return redirect('student/dashboard');
+      }
     }
 }

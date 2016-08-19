@@ -47,7 +47,6 @@ class ClubRepository implements ClubRepositoryInterface {
         ->orderBy('faculty','asc')
         ->get();
 
-
         $data = json_decode($members,true);
         return $data;
     }
