@@ -27,12 +27,11 @@ class ClubController extends ACMBaseController
         return $this->theme->layout('login')->scope('club.index')->render();
     }
 
-    public function getDashboard($chub_id){
-        $club_id = $this->club_id;
+    public function getDashboard(){
+        $club_id = Input::get('club_id');
         $club = $this->ClubRepository->getClubInfo($club_id);
-
         $member_amount = $this->ClubRepository->getMemberAmount($club_id);
-        $members = $this->Club2Repository->getAllMembers($club_id);
+        $members = $this->ClubRepository->getAllMembers($club_id);
         $content = array(
             'club' => $club,
             'member_amount' => $member_amount,
@@ -72,7 +71,6 @@ class ClubController extends ACMBaseController
 
     public function postAddclub(){
         $data = Input::all();
-
         $std_id = array_get($this->user,'username');
         $club_id = $this->ClubRepository->getClubNumber(array_get($data,'club_id'));
         $this->ClubRepository->addClub($std_id,array_get($club_id,'0.club_id'));

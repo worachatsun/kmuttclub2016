@@ -28,7 +28,7 @@ class ClubRepository implements ClubRepositoryInterface {
 
     public function getClubInfo($club_id)
     {
-        $club = $this->clubs->where('club_id',$club_id)->get()->first();
+        $club = $this->clubs->where('club_secret_code',$club_id)->first();
         return $club;
     }
 
