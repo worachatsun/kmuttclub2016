@@ -2,6 +2,10 @@
     <img src="<?php echo url(""); ?>/themes/alchemist/assets/img/logo-big-white.gif" alt="">
 </div>
 
+<div class="alert alert-danger text-center">
+	<strong>BETA!</strong> Testing
+</div>
+
 <div class="content">
   @if ($errors->has())
     <div class="alert alert-danger">

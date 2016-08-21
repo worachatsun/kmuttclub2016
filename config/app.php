@@ -165,6 +165,9 @@ return [
 
         'Teepluss\Theme\ThemeServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+
+        Collective\Bus\BusServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         //Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
 
 
@@ -222,6 +225,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
         'Adldap' => Adldap\Laravel\Facades\Adldap::class,
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         //'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
 
     ],
