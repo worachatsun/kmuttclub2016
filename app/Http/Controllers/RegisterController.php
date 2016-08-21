@@ -19,8 +19,13 @@ class RegisterController extends ACMBaseController
   }
 
   public function getIndex(){
-    $data = $this->user;
-    return $this->theme->scope('fb',$data)->layout('blank')->render();
+    $user = $this->user;
+    $stu = $this->RegisterRepository->checkClub(array_get($user,'username'));
+    if (is_null($stu)) {
+      return $this->theme->scope('fb',$user)->layout('blank')->render();
+    }else{
+      return redirect('/student/dashboard');
+    }
   }
 
   public function postRegister(){
@@ -32,7 +37,6 @@ class RegisterController extends ACMBaseController
     $messages = array(
         'email.required'  => 'Email field is required.'
     );
-
 
     $validator = Validator::make($data,$rules,$messages);
 

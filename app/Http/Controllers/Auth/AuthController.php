@@ -53,12 +53,7 @@ class AuthController extends Controller
             if (isset($user)) {
               if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)){
                 Auth::Login($user);
-                $stu = Student::where('std_id',$username)->first();
-                if (is_null($stu)) {
-                  return redirect('/main');
-                }else{
-                  return redirect('/student/dashboard');
-                }
+                return redirect('/main');
               }
             }else{
                 if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)) {

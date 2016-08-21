@@ -42,4 +42,9 @@ class RegisterRepository implements RegisterRepositoryInterface
     return $code;
   }
 
+  public function checkClub($user){
+    $student = $this->Student->where('std_id',$user)->first();
+    return $student;
+  }
+
 }

@@ -14,6 +14,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::controller('auth','Auth\AuthController');
 
     Route::group(['middleware' => ['auth']], function () {
+      Route::get('/','RegisterController@getIndex');
       Route::controller('main','RegisterController');
       Route::controller('club','ClubController');
       Route::controller('organization', 'OrgController');
