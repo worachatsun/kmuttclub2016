@@ -13,8 +13,18 @@
 					<div class="note note-success note-bordered">
 						<h4 class="block">How to Register Club</h4>
 						<p>
-							First Visit about club and click in "Register Club" and put Club Secret Code in to the field.
+							First visit about club and click in "Register Club" and put Club Secret Code in to the field.
 						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="top-news margin-top-10 col-xs-12">
+						<div class="btn yellow-gold btn-block">
+							<span class="title">
+								<center>Register club not found</center>
+							</span>
+						</div>
 					</div>
 				</div>
 			@else
