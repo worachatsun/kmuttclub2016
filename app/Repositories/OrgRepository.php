@@ -6,7 +6,7 @@ use App\Models\Enroll;
 use App\Models\Club;
 
 class OrgRepository implements OrgRepositoryInterface{
-    
+
     protected $clubs;
     protected $studentAccounts;
     protected $registrations;
@@ -56,15 +56,25 @@ class OrgRepository implements OrgRepositoryInterface{
         if($count >= 2){
             $clubInfos->put('meetCondition',true);
         }
-        
-        return $clubInfos;  
+
+        return $clubInfos;
     }
-    
+
     // Club
 
     public function getClubInfo($id){
         $club = $this->clubs->where('club_id',$id)->get()->first();
         return $club;
+    }
+
+    public function checkRole($std_id){
+      $role = $this->studentAccounts->select('role')->where('std_id',$std_id)->first();
+      return array_get($role,'role');
+    }
+
+    public function getClubSecretCode($club_id){
+      $club_secret_code = $this->clubs->select('club_secret_code')->where('club_id',$club_id)->first();
+      return array_get($club_secret_code,'club_secret_code');
     }
 
 }

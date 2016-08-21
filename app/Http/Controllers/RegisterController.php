@@ -21,7 +21,7 @@ class RegisterController extends ACMBaseController
   public function getIndex(){
     $user = $this->user;
     $stu = $this->RegisterRepository->checkClub(array_get($user,'username'));
-    if (is_null($stu)) {
+    if (is_null($stu)||$stu==="") {
       return $this->theme->scope('fb',$user)->layout('blank')->render();
     }else{
       return redirect('/student/dashboard');

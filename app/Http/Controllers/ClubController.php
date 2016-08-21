@@ -31,7 +31,7 @@ class ClubController extends ACMBaseController
       $role = $this->ClubRepository->checkRole($std_id);
       $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
       if (is_null($role)||$role==="") {
-        dd('access denies');
+        return redirect('/');
       }elseif($role==='43'){
         return redirect('alchemist');
       }else{
@@ -50,7 +50,14 @@ class ClubController extends ACMBaseController
 
     public function getRegis()
     {
+      $std_id = array_get($this->user,'username');
+      $role = $this->ClubRepository->checkRole($std_id);
+      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
+      if($role==='44'){
         return $this->theme->scope('club.regis')->layout('blank')->render();
+      }else{
+        return redirect('/');
+      }
     }
 
 
@@ -67,8 +74,15 @@ class ClubController extends ACMBaseController
     }
 
     public function getAddclub(){
-      $data = $this->user;
-      return $this->theme->scope('club',$data)->layout('blank')->render();
+      $std_id = array_get($this->user,'username');
+      $role = $this->ClubRepository->checkRole($std_id);
+      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
+      if($role==='44'){
+        $data = $this->user;
+        return $this->theme->scope('club',$data)->layout('blank')->render();
+      }else{
+        return redirect('/');
+      }
     }
 
     public function postAddclub(){
