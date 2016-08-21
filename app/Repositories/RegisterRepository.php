@@ -15,8 +15,9 @@ class RegisterRepository implements RegisterRepositoryInterface
     $student = new Student();
     $fb = array_get($data,'fb');
     $email = array_get($data,'email');
+    $secret = $this->_secret();
     $student->where('std_id',array_get($detail_ldap,'username'))
-            ->update(['facebook'=>$fb,'email'=>$email]);
+            ->update(['facebook'=>$fb,'email'=>$email,'secret_code'=>$secret]);
     return 'success';
   }
 
