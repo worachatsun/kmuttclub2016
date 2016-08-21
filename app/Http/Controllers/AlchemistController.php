@@ -23,6 +23,9 @@ class AlchemistController extends ACMBaseController{
 
     public function postBindclub(){
       $data = Input::all();
-      dd($data);
+      $student = array_get($data,'student');
+      $club = array_get($data,'club');
+      $this->AlchemistRepository->bindClubStudent($student,$club);
+      return redirect('alchemist');
     }
 }

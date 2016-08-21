@@ -15,8 +15,9 @@ class AlchemistRepository implements AlchemistRepositoryInterface{
     }
 
     public function bindClubStudent($std_id,$club){
-      $club_id = $this->club->select('club_id')->where('club_secret_code',$club)->first();
-      $this->student->where('std_id',$std_id)->update(['role'=>$club]);
+      $data = $this->club->select('club_id')->where('club_secret_code',$club)->first();
+      $club_id = array_get($data,'club_id');
+      $this->student->where('std_id',$std_id)->update(['role'=>$club_id]);
       return 'updated';
     }
 }
