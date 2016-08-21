@@ -117,7 +117,7 @@ return [
                 |
                 */
 
-                'domain_controllers' => ['ldap.kmutt.ac.th'], //'ldap.kmutt.ac.th'],
+                'domain_controllers' => ['10.1.130.12'], //'ldap.kmutt.ac.th'],
 
                 /*
                 |--------------------------------------------------------------------------
