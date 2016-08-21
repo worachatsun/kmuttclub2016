@@ -24,10 +24,10 @@
             </div>
             <div class="details">
               <div class="number">
-                2321
+                {{ $reged_std }}
               </div>
               <div class="desc">
-                registed students
+                Enrolls Success
               </div>
             </div>
           </a>
@@ -39,10 +39,10 @@
             </div>
             <div class="details">
               <div class="number">
-                2321
+                {{ $total_std }}
               </div>
               <div class="desc">
-                total students
+                Total Students
               </div>
             </div>
           </a>
