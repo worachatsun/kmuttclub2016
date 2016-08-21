@@ -2,7 +2,7 @@
 	<div class="page-header-top">
 		<div class="container">
 			<div class="page-logo">
-				<a href="index.html"><img src="<?php echo url(""); ?>/themes/alchemist/assets/img/logo-default.png" alt="logo" class="logo-default"></a>
+				<a href="/"><img src="<?php echo url(""); ?>/themes/alchemist/assets/img/logo-default.png" alt="logo" class="logo-default"></a>
 			</div>
 			<a href="javascript:;" class="menu-toggler"></a>
 			<div class="top-menu">
