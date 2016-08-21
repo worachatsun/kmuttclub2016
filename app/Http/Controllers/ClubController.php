@@ -51,14 +51,7 @@ class ClubController extends ACMBaseController
 
     public function getRegis()
     {
-      $std_id = array_get($this->user,'username');
-      $role = $this->ClubRepository->checkRole($std_id);
-      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
-      if($role != 'null'){
         return $this->theme->scope('club.regis')->layout('org')->render();
-      }else{
-        return redirect('/');
-      }
     }
 
 
@@ -75,15 +68,8 @@ class ClubController extends ACMBaseController
     }
 
     public function getAddclub(){
-      $std_id = array_get($this->user,'username');
-      $role = $this->ClubRepository->checkRole($std_id);
-      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
-      if($role==='44'){
         $data = $this->user;
         return $this->theme->scope('club',$data)->layout('blank')->render();
-      }else{
-        return redirect('/');
-      }
     }
 
     public function postAddclub(){
@@ -139,7 +125,7 @@ class ClubController extends ACMBaseController
               $data = array();
 
               array_push($data,array('#','STUDENT ID','NAME - SURNAME','FACULTY','EMAIL','FACEBOOK'));
-              
+
               foreach ( $this->member as $key => $c) {
 
                 array_push($data, array(
@@ -155,7 +141,7 @@ class ClubController extends ACMBaseController
               $sheet->fromArray($data, null, 'A1', false, false);
             });
 
-        })->export('xlsx');                
+        })->export('xlsx');
     }
 
 }
