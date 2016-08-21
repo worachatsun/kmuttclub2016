@@ -125,9 +125,7 @@
                         {{ $member['email'] }}
                       </td>
                       <td>
-                        <a href="{{ $member['facebook'] }}" class="btn default btn-xs green-stripe">
-													GO TO FACEBOOK
-                        </a>
+                        {{ $member['facebook'] }}
                       </td>
                     </tr>
                     @endforeach
