@@ -16,6 +16,7 @@
 			@endif
 
       <div class="row">
+        
         <div class="col-md-6 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
@@ -31,6 +32,7 @@
 					</div>
 					</a>
 				</div>
+        
         <div class="col-md-3 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
@@ -46,7 +48,8 @@
 					</div>
 					</a>
 				</div>
-				<div class="col-md-3 col-xs-12">
+				
+        <div class="col-md-3 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="{{ url('club/regis') }}">
 					<div class="visual">
 						<i class="fa fa-group fa-icon-medium"></i>

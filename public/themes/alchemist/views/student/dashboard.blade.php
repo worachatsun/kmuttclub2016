@@ -10,15 +10,18 @@
 				</div>
 			@else 
 				<div class="row">
-					<div class="col-md-9">
-						<h1>Club List</h1>
-					</div>
-					<div class="col-md-12">
-						<div class="pull-right">
-							<a href="{{ url('/club')}}" class="btn  yellow-gold"> 	Switch To club </a>
-						</div>
-					</div>
-				</div>
+
+        <div class="col-xs-12">
+            <p class="clearfix">
+              <a href="{{ url('/club')}}">
+                <button class="btn yellow-gold pull-left" type="button">
+                  Switch To Club
+                </button>
+              </a>
+            </p>
+        </div>
+      </div>
+
 			@endif	
 
 			@if (count($clubs) === 0)

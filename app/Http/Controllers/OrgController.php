@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\OrgRepositoryInterface;
-use App\Repositories\ClubRepositoryInterface;
+use Excel;
 
 class OrgController extends ACMBaseController
 {
@@ -54,27 +54,49 @@ class OrgController extends ACMBaseController
 
     }
 
-    // Base
-    public function getAllClubs(){
-        $clubs = $this->OrgRepository->getAllClubs();
-        return json_decode($clubs,true);
+    public function getReport(){
+
+        Excel::create('Report', function($excel) {
+
+            $excel->sheet('ALL CLUB', function($sheet) {
+                
+                $data = array();
+
+                array_push($data,array('#','CLUB NAME','SECRET CODE','MEMBERS'));
+                
+                foreach ($this->OrgRepository->getAllClubs() as $club) {
+                    array_push($data, json_decode($club,true));
+                }
+
+                $sheet->fromArray($data, null, 'A1', false, false);
+            });
+
+            foreach ($this->OrgRepository->getAllClubs() as $club) {
+                $this->club = $club;
+                
+                $excel->sheet($club["club_name"], function($sheet) {
+                    $data = array();
+
+                    array_push($data,array('#','STUDENT ID','NAME - SURNAME','FACULTY','EMAIL','FACEBOOK'));
+                    
+                    foreach ($this->OrgRepository->getClubMembers($this->club["club_id"]) as $key => $c) {
+
+                        array_push($data, array(
+                            $key+1,
+                            $c["std_id"],
+                            $c["name"]." ".$c["surname"],
+                            $c["faculty"],
+                            $c["email"],
+                            $c["facebook"],
+                        ));
+                    }
+
+                    $sheet->fromArray($data, null, 'A1', false, false);
+
+                });
+            }
+
+        })->export('xlsx');        
+        
     }
-
-    public function getAllClubMembers($id){
-        $members = $this->OrgRepository->getClubMembers($id);
-        $memberAmount = $this->OrgRepository->getClubMembersAmount($id);
-
-        $collection = collect(['members'=>$members, "amount"=>$memberAmount]);
-        return $collection;
-    }
-
-    public function getMemberInfos($id){
-        return $this->OrgRepository->getInformation($id);
-    }
-
-    public function getStudentClub($stdId){
-        return $this->OrgRepository->getRegistryInfos($stdId);
-    }
-
-
 }

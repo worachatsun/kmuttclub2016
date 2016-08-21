@@ -21,12 +21,7 @@ class StudentController extends ACMBaseController
 
 
     public function getIndex(){
-        $std_id = $this->std_id;
-        $clubs = $this->StudentRepository->getAllClubs($std_id);
-        $content = array(
-            'clubs' => $clubs
-        );
-        return $this->theme->layout('std')->scope('student.dashboard',$content)->render();
+        return redirect('student/dashboard');
     }
 
     public function getDashboard(){
@@ -37,7 +32,7 @@ class StudentController extends ACMBaseController
         Session::put('club_secret',$this->StudentRepository->getClubFromRole($role));
         $content = array(
             'clubs' => $clubs,
-            'role' => $role
+            'role' => $role['role']
         );
         return $this->theme->layout('std')->scope('student.dashboard',$content)->render();
     }

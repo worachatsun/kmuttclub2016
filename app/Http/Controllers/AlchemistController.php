@@ -17,6 +17,16 @@ class AlchemistController extends ACMBaseController{
       return redirect('alchemist/bindclub');
     }
 
+    public function getNophone(){
+      return $this->theme->scope('nophone')->render();
+    }
+
+    public function postNophone(){
+      $data = Input::get();
+      $this->AlchemistRepository->noPhoneInsert($data);
+      return redirect('alchemist/nophone');
+    }
+
     public function getBindclub(){
       return $this->theme->scope('alchemist')->render();
     }
