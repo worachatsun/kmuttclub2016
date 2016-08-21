@@ -90,6 +90,9 @@
                   <thead>
                     <tr class="uppercase">
                       <th>
+                        #                      
+                      </th>
+                      <th>
                         STUDENT ID
                       </th>
                       <th>
