@@ -97,8 +97,8 @@ class ClubController extends ACMBaseController
       );
       $messages = array(
           'club_id.required' => 'Club ID field is required.',
-          'club_id.min' => 'Club ID field has to be 6 chars long.',
-          'club_id.max' => 'Club ID field has to be 6 chars long.'
+          'club_id.min' => 'Club ID field has to be 5 chars long.',
+          'club_id.max' => 'Club ID field has to be 5 chars long.'
       );
 
       $validator = Validator::make($data,$rules,$messages);
