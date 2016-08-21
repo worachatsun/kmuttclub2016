@@ -80,10 +80,11 @@ class OrgController extends ACMBaseController
                     array_push($data,array('#','STUDENT ID','NAME - SURNAME','FACULTY','EMAIL','FACEBOOK'));
                     
                     foreach ($this->OrgRepository->getClubMembers($this->club["club_id"]) as $key => $c) {
+
                         array_push($data, array(
                             $key+1,
                             $c["std_id"],
-                            $c["name"] + $c["surname"]+"",
+                            $c["name"]." ".$c["surname"],
                             $c["faculty"],
                             $c["email"],
                             $c["facebook"],

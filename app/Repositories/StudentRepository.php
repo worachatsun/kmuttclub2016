@@ -40,7 +40,7 @@ class StudentRepository implements StudentRepositoryInterface {
         $role = $this->studentAccounts
         ->select('role')
         ->where('std_id',$std_id)
-        ->get();
+        ->get()->first();
             
         $data = json_decode($role,true);
         return $data;
