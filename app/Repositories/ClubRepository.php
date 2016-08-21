@@ -94,6 +94,11 @@ class ClubRepository implements ClubRepositoryInterface {
       return $club;
     }
 
+    public function checkRole($std_id){
+      $role = $this->studentAccounts->select('role')->where('std_id',$std_id)->first();
+      return array_get($role,'role');
+    }
+
 
 
 }

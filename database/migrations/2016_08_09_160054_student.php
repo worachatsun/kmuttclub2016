@@ -20,7 +20,7 @@ class Student extends Migration
         $table->string('email', 100)->unique();
         $table->string('facebook', 100)->nullable();
         $table->string('faculty', 100);
-        $table->string('major', 100);
+        $table->string('role', 100);
         $table->timestamps();
         $table->string('secret_code', 100);
         $table->primary('std_id');
