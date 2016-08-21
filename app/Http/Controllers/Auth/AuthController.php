@@ -7,6 +7,7 @@ use Auth;
 use Adldap;
 use Validator;
 use Session;
+use App\Models\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -52,7 +53,12 @@ class AuthController extends Controller
             if (isset($user)) {
               if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)){
                 Auth::Login($user);
-                return redirect('/student/dashboard');
+                $stu = Student::where('std_id',57130500073)->first();
+                if (is_null($stu)) {
+                  return redirect('/main');
+                }else{
+                  return redirect('/student/dashboard');
+                }
               }
             }else{
                 if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)) {
