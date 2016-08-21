@@ -27,7 +27,7 @@ class RegisterController extends ACMBaseController
     $user = $this->user;
     $data = Input::all();
     $rules = array(
-        'email' => 'required'
+        'email' => 'required|email'
     );
     $messages = array(
         'email.required'  => 'Email field is required.'
