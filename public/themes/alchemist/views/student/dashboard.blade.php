@@ -13,12 +13,10 @@
 					<div class="col-md-9">
 						<h1>Club List</h1>
 					</div>
-					<div class="col-md-3">
-						<a href="{{ url('/club')}}">
-							<button class="btn yellow-gold" type="button">
-								Switch To Club
-							</button>
-						</a>
+					<div class="col-md-12">
+						<div class="pull-right">
+							<a href="{{ url('/club')}}" class="btn  yellow-gold"> 	Switch To club </a>
+						</div>
 					</div>
 				</div>
 			@endif	

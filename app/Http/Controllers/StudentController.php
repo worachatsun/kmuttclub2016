@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\StudentRepositoryInterface;
 use Illuminate\Http\Request;
+use Session;
 use Input;
 
 class StudentController extends ACMBaseController
@@ -32,7 +33,8 @@ class StudentController extends ACMBaseController
 
         $std_id = array_get($this->user,'username');
         $clubs = $this->StudentRepository->getAllClubs($std_id);
-        $role = $this->StudentRepository->getRole($std_id); 
+        $role = $this->StudentRepository->getRole($std_id);
+        Session::put('club_secret',$this->StudentRepository->getClubFromRole($role));
         $content = array(
             'clubs' => $clubs,
             'role' => $role

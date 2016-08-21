@@ -53,8 +53,8 @@ class ClubController extends ACMBaseController
       $std_id = array_get($this->user,'username');
       $role = $this->ClubRepository->checkRole($std_id);
       $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
-      if($role==='44'){
-        return $this->theme->scope('club.regis')->layout('blank')->render();
+      if($role != 'null'){
+        return $this->theme->scope('club.regis')->layout('org')->render();
       }else{
         return redirect('/');
       }
@@ -64,12 +64,12 @@ class ClubController extends ACMBaseController
 
     public function postRegis()
     {
-       $secret_code = Input::get('sc');
+       $secret_code = Input::get('club_id');
        if($secret_code == null){
             return redirect('/club/regis');
         }
-       $this->ClubRepository->studentEnroll($secret_code,$this->club_secret_code);
-       return $this->theme->scope('club.regis')->layout('blank')->render();
+       $this->ClubRepository->studentEnroll($secret_code, Session::get('club_secret')['0']->club_secret_code);
+       return redirect("club/dashboard");
 
     }
 

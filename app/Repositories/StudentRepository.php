@@ -45,5 +45,16 @@ class StudentRepository implements StudentRepositoryInterface {
         $data = json_decode($role,true);
         return $data;
     }
+
+    public function getClubFromRole($role){
+
+        $club = $this->clubs
+        ->select('club_secret_code')
+        ->where('club_id', $role)
+        ->get();
+
+        return json_decode($club);
+
+    }
        
 }

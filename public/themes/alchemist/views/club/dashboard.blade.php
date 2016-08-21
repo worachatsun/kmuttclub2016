@@ -3,15 +3,16 @@
 		<div class="container">
       @if ($role !== null)	
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-xs-12">
+            <p class="clearfix">
+              <a href="{{ url('/student/dashboard')}}">
+                <button class="btn yellow-gold pull-left" type="button">
+                  Switch To Student
+                </button>
+              </a>
+            </p>
         </div>
-        <div class="col-md-3">
-						<a href="{{ url('/student/dashboard')}}">
-							<button class="btn yellow-gold" type="button">
-								Switch To Student
-							</button>
-						</a>
-				</div>
+      </div>
 			@endif
 
       <div class="row">
