@@ -62,6 +62,14 @@ class AuthController extends Controller
                         $name = array_get($user, 'attributes.displayname.0').' '.array_get($user, 'attributes.givenname.0');
                         $mail = array_get($user, 'attributes.mail.0');
                         $faculty = explode("/", array_get($user, 'attributes.homedirectory.0') );
+                        
+                        $student = new Student();
+                        $student->std_id = $username;
+                        $student->name = array_get($user, 'attributes.displayname.0');
+                        $student->surname = array_get($user, 'attributes.givenname.0');
+                        $student->faculty = array_get($faculty, '2');
+                        $student->save();
+
                         $user = User::create([
                             'username'  =>  $username,
                             'name'      =>  $name,

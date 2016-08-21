@@ -16,11 +16,19 @@ class OrgController extends ACMBaseController
     }
 
     public function getIndex(){
+      $std_id = array_get($this->user,'username');
+      $role = $this->OrgRepository->checkRole($std_id);
+      $club_secret_code = $this->OrgRepository->getClubSecretCode($role);
+      if($role==='44'){
         $collection = array(
             'clubs' => $this->OrgRepository->getAllClubs(),
             'user' => $this->user
         );
-        return $this->theme->scope('organization.index',$collection)->layout('std')->render();
+        return $this->theme->scope('organization.index',$collection)->render();
+      }else{
+        return redirect('/');
+      }
+
     }
 
     public function getClub($club_id = null){
@@ -29,13 +37,20 @@ class OrgController extends ACMBaseController
             return redirect('/organization');
         }
 
-        $collection = array(
-            'club' => $this->OrgRepository->getClubInfo($club_id),
-            'club_members' => $this->OrgRepository->getClubMembers($club_id)->count(),
-            'members' => $this->OrgRepository->getClubMembers($club_id)
-        );
+        $std_id = array_get($this->user,'username');
+        $role = $this->OrgRepository->checkRole($std_id);
+        $club_secret_code = $this->OrgRepository->getClubSecretCode($role);
+        if($role==='44'){
+          $collection = array(
+              'club' => $this->OrgRepository->getClubInfo($club_id),
+              'club_members' => $this->OrgRepository->getClubMembers($club_id)->count(),
+              'members' => $this->OrgRepository->getClubMembers($club_id)
+          );
 
-        return $this->theme->scope('organization.club',$collection)->render();
+          return $this->theme->scope('organization.club',$collection)->render();
+        }else{
+          return redirect('/');
+        }
 
     }
 

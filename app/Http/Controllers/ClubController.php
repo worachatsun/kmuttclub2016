@@ -19,8 +19,6 @@ class ClubController extends ACMBaseController
     public function __construct(ClubRepositoryInterface $ClubRepository){
         parent::__construct();
         $this->ClubRepository = $ClubRepository;
-        $this->club_secret_code = 'CTN5R';
-        $this->club_id = 22;
     }
 
 
@@ -29,12 +27,11 @@ class ClubController extends ACMBaseController
     }
 
     public function getDashboard(){
-
       $std_id = array_get($this->user,'username');
       $role = $this->ClubRepository->checkRole($std_id);
       $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
       if (is_null($role)||$role==="") {
-        dd('access denies');
+        return redirect('/');
       }elseif($role==='43'){
         return redirect('alchemist');
       }else{
@@ -44,7 +41,8 @@ class ClubController extends ACMBaseController
         $content = array(
             'club' => $club,
             'member_amount' => $member_amount,
-            'members' => $members
+            'members' => $members,
+            'role' => $role
         );
         return $this->theme->scope('club.dashboard',$content)->layout('org')->render();
       }
@@ -52,7 +50,14 @@ class ClubController extends ACMBaseController
 
     public function getRegis()
     {
+      $std_id = array_get($this->user,'username');
+      $role = $this->ClubRepository->checkRole($std_id);
+      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
+      if($role==='44'){
         return $this->theme->scope('club.regis')->layout('blank')->render();
+      }else{
+        return redirect('/');
+      }
     }
 
 
@@ -69,8 +74,15 @@ class ClubController extends ACMBaseController
     }
 
     public function getAddclub(){
-      $data = $this->user;
-      return $this->theme->scope('club',$data)->layout('blank')->render();
+      $std_id = array_get($this->user,'username');
+      $role = $this->ClubRepository->checkRole($std_id);
+      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
+      if($role==='44'){
+        $data = $this->user;
+        return $this->theme->scope('club',$data)->layout('blank')->render();
+      }else{
+        return redirect('/');
+      }
     }
 
     public function postAddclub(){
