@@ -1,5 +1,5 @@
 <div class="logo">
-    <img src="<?php echo url(""); ?>/themes/alchemist/assets/img/logo-big-white.gif" alt="">
+    <img src="<?php echo url(""); ?>/themes/alchemist/assets/img/logo-big-white.png" alt="" width="200">
 </div>
 
 <div class="alert alert-danger text-center">
