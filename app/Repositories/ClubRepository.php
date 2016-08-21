@@ -88,6 +88,12 @@ class ClubRepository implements ClubRepositoryInterface {
       return $club;
     }
 
+    public function checkDuplicateClub($std_id,$club_secret_code){
+      $club_id = $this->clubs->select('club_id')->where('club_secret_code',$club_secret_code)->first();
+      $club = $this->registrations->where('std_id',$std_id)->where('club_id',array_get($club_id,'club_id'))->first();
+      return $club;
+    }
+
 
 
 }

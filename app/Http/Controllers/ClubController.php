@@ -92,6 +92,7 @@ class ClubController extends ACMBaseController
 
     public function postConfirmclub(){
       $data = Input::all();
+      $std_id = array_get($this->user,'username');
       $rules = array(
           'club_id' => 'required|min:5|max:5'
       );
@@ -104,6 +105,7 @@ class ClubController extends ACMBaseController
       $validator = Validator::make($data,$rules,$messages);
 
       $check_club = $this->ClubRepository->checkClub(array_get($data,'club_id'));
+      $check_duplicate_club = $this->ClubRepository->checkDuplicateClub($std_id,array_get($data,'club_id'));
 
       if ($validator->fails()) {
         $messages = $validator->messages();
@@ -111,8 +113,10 @@ class ClubController extends ACMBaseController
       }elseif(is_null($check_club)){
         $error['club'] = 'This club not available.';
         return redirect('club/addclub')->withErrors($error);
+      }elseif(!is_null($check_duplicate_club)){
+        $error['club'] = 'You already registed this club.';
+        return redirect('club/addclub')->withErrors($error);
       } else {
-        $std_id = array_get($this->user,'username');
         $club_info = $this->ClubRepository->getClubInfo(array_get($data,'club_id'));
         return $this->theme->scope('confirmclub',$club_info)->layout('std')->render();
       }
