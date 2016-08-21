@@ -34,7 +34,7 @@ class ClubController extends ACMBaseController
       $role = $this->ClubRepository->checkRole($std_id);
       $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
       if (is_null($role)||$role==="") {
-        dd('access denies');
+        return redirect('/');
       }elseif($role==='43'){
         return redirect('alchemist');
       }else{

@@ -33,7 +33,7 @@
 					<div class="top-news margin-top-10 col-xs-12">
 						<div class="btn yellow-gold btn-block">
 							<div class="tools pull-right">
-								<button type="button" class="btn yellow-gold" data-toggle="modal" data-target="#std-delete-club" data-club-name="{{ $club['club_name'] }}" data-club-id="{{ $club['id'] }}">
+								<button type="button" class="btn yellow-gold" data-toggle="modal" data-target="#std-delete-club" data-club-name="{{ $club['club_name'] }}" data-club-id="{{ $club['club_id'] }}">
 									&times;
 								</button>
 								</div>
