@@ -2,11 +2,6 @@
     <img src="<?php echo url(""); ?>/themes/alchemist/assets/img/logo-big-white.png" alt="" width="200">
 </div>
 
-<div class="alert alert-danger text-center">
-	<strong>BETA!</strong> Testing<br>
-	<i>Server : <?php echo gethostname(); ?>
-</div>
-
 <div class="content">
   @if ($errors->has())
     <div class="alert alert-danger">
