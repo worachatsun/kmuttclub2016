@@ -17,7 +17,7 @@ class Student extends Migration
         $table->string('name', 100);
         $table->string('surname', 100);
         $table->integer('tel');
-        $table->string('email', 100)->unique();
+        $table->string('email', 100);
         $table->string('facebook', 100)->nullable();
         $table->string('faculty', 100);
         $table->string('role', 100)->nullable();
