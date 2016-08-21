@@ -250,6 +250,7 @@ class LDAPLoadController extends Controller
             $student->name = $name;
             $student->surname = array_get($data, 'attributes.givenname.0');
             $student->faculty = array_get($faculty, '2');
+            $student->role = $stu['club_id'];
             $student->save();
 
             $user = User::create([
