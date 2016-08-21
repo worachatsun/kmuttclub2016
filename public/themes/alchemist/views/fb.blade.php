@@ -76,7 +76,7 @@
 										<label for="form_control_1">Name</label>
 									</div>
 									<div class="form-group form-md-line-input">
-										<input type="text" class="form-control" name="fb" id="form_control_1" placeholder="Enter your Facebook Name">
+										<input type="text" class="form-control" name="fb" id="form_control_1" placeholder="Enter your Facebook Name" value="{{ old('fb') }}">
 										<label for="form_control_1">Facebook Name</label>
 										<span class="help-block">e.g. Kanison Sutham</span>
 									</div>

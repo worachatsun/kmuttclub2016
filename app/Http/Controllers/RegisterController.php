@@ -38,7 +38,7 @@ class RegisterController extends ACMBaseController
 
     if ($validator->fails()) {
         $messages = $validator->messages();
-        return redirect('main')->withErrors($validator);
+        return redirect('main')->withErrors($validator)->withInput();
     } else {
         $redi = $this->RegisterRepository->fb_email_regis($data,$user);
         return redirect('student/dashboard');
