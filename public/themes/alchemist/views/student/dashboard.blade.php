@@ -14,10 +14,10 @@
 						<h1>Club List</h1>
 					</div>
 					<div class="col-md-3">
-						<a href="<?php echo url(""); ?>/club/index">
-						<button class="btn yellow-gold" type="button">
-							Switch To Club
-						</button>
+						<a href="{{ url('/club')}}">
+							<button class="btn yellow-gold" type="button">
+								Switch To Club
+							</button>
 						</a>
 					</div>
 				</div>

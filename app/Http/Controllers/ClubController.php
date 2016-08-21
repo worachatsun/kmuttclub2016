@@ -19,8 +19,6 @@ class ClubController extends ACMBaseController
     public function __construct(ClubRepositoryInterface $ClubRepository){
         parent::__construct();
         $this->ClubRepository = $ClubRepository;
-        $this->club_secret_code = 'CTN5R';
-        $this->club_id = 22;
     }
 
 
@@ -29,7 +27,6 @@ class ClubController extends ACMBaseController
     }
 
     public function getDashboard(){
-
       $std_id = array_get($this->user,'username');
       $role = $this->ClubRepository->checkRole($std_id);
       $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
