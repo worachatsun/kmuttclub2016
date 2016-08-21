@@ -26,7 +26,7 @@
 								<form action="deletingclub" method="POST">
 									<input type="hidden" name="club_id" value="{{ $club['club_id'] }}">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
-									<button class="btn yellow-gold" type="submit">X</button>
+									<button class="btn yellow-gold" type="submit"> X </button>
 								</form>
 									</a>
 								</div>
