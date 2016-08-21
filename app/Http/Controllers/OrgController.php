@@ -22,7 +22,9 @@ class OrgController extends ACMBaseController
       if($role==='44'){
         $collection = array(
             'clubs' => $this->OrgRepository->getAllClubs(),
-            'user' => $this->user
+            'total_std' => $this->OrgRepository->getTotalStd(),
+            'reged_std' => $this->OrgRepository->getRegistedStd(),
+            'user' => $this->user,
         );
         return $this->theme->scope('organization.index',$collection)->render();
       }else{

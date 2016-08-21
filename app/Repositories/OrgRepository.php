@@ -77,4 +77,15 @@ class OrgRepository implements OrgRepositoryInterface{
       return array_get($club_secret_code,'club_secret_code');
     }
 
+    public function getRegistedStd(){
+        $result = $this->registrations->get()->count(); 
+        return $result; 
+
+    }
+
+    public function getTotalStd(){
+        $result = $this->studentAccounts->get()->count();
+        return $result; 
+    }
+
 }

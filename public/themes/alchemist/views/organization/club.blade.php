@@ -2,7 +2,7 @@
   <div class="page-content">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-8 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
 						<i class="fa fa-comments fa-icon-medium"></i>
@@ -32,22 +32,6 @@
 					</div>
 					</a>
 				</div>
-        <div class="col-md-2 col-xs-12">
-					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
-					<div class="visual">
-						<i class="fa fa-group fa-icon-medium"></i>
-					</div>
-					<div class="details">
-						<div class="number">
-							 Register
-						</div>
-						<div class="desc">
-							 student
-						</div>
-					</div>
-					</a>
-				</div>
-        
       </div>
 
       <div class="row">
@@ -114,9 +98,7 @@
                         {{ $member['email'] }}
                       </td>
                       <td>
-                        <a href="{{ $member['facebook'] }}" class="btn default btn-xs yellow-gold-stripe">
-													GO TO FACEBOOK
-                        </a>
+                        {{ $member['facebook'] }}
                       </td>
                     </tr>
                     @endforeach
