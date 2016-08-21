@@ -103,9 +103,14 @@ class ClubController extends ACMBaseController
 
       $validator = Validator::make($data,$rules,$messages);
 
+      $check_club = $this->ClubRepository->checkClub(array_get($data,'club_id'));
+
       if ($validator->fails()) {
         $messages = $validator->messages();
         return redirect('club/addclub')->withErrors($validator);
+      }elseif(is_null($check_club)){
+        $error['club'] = 'This club not available.';
+        return redirect('club/addclub')->withErrors($error);
       } else {
         $std_id = array_get($this->user,'username');
         $club_info = $this->ClubRepository->getClubInfo(array_get($data,'club_id'));

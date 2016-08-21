@@ -83,6 +83,11 @@ class ClubRepository implements ClubRepositoryInterface {
       return $data;
     }
 
+    public function checkClub($club_secret_code){
+      $club = $this->clubs->where('club_secret_code',$club_secret_code)->first();
+      return $club;
+    }
+
 
 
 }
