@@ -19,7 +19,7 @@ class OrgController extends ACMBaseController
             'clubs' => $this->OrgRepository->getAllClubs(),
             'user' => $this->user
         );
-        return $this->theme->scope('organization.index',$collection)->render();
+        return $this->theme->scope('organization.index',$collection)->layout('std')->render();
     }
 
     public function getClub($club_id = null){
