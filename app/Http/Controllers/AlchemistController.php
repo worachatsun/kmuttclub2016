@@ -18,7 +18,7 @@ class AlchemistController extends ACMBaseController{
     }
 
     public function getNophone(){
-      return $this->theme->scope('nophone')->render();
+      return $this->theme->scope('nophone')->layout('org')->render();
     }
 
     public function postNophone(){
@@ -28,7 +28,7 @@ class AlchemistController extends ACMBaseController{
     }
 
     public function getBindclub(){
-      return $this->theme->scope('alchemist')->render();
+      return $this->theme->scope('alchemist')->layout('org')->render();
     }
 
     public function postBindclub(){

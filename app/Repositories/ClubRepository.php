@@ -58,9 +58,7 @@ class ClubRepository implements ClubRepositoryInterface {
         $this->registrations->insert(['std_id'=>$std_id , 'club_id'=>$club_id]);
 
     }
-
-
-
+    
     private function _getStudentId($secret_code)
     {
         $std_id = $this->studentAccounts->where('secret_code',$secret_code)->first();
