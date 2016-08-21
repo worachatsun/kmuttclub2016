@@ -32,7 +32,7 @@ class StudentController extends ACMBaseController
 
         $std_id = array_get($this->user,'username');
         $clubs = $this->StudentRepository->getAllClubs($std_id);
-        $role = $this->StudentRepository->getRole($std_id);
+        $role = $this->StudentRepository->getRole($std_id); 
         $content = array(
             'clubs' => $clubs,
             'role' => $role
@@ -47,11 +47,4 @@ class StudentController extends ACMBaseController
         $this->StudentRepository->deleteMyClub($std_id,$club_id);
         return redirect('student/dashboard');
     }
-
-    public function postClubDashboard()
-    {
-        
-    }
-
-
 }

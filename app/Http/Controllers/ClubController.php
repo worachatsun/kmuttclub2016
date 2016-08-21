@@ -41,7 +41,8 @@ class ClubController extends ACMBaseController
         $content = array(
             'club' => $club,
             'member_amount' => $member_amount,
-            'members' => $members
+            'members' => $members,
+            'role' => $role
         );
         return $this->theme->scope('club.dashboard',$content)->layout('org')->render();
       }

@@ -1,6 +1,19 @@
 <div class="page-container">
 	<div class="page-content club-list-container">
 		<div class="container">
+      @if ($role !== null)	
+      <div class="row">
+        <div class="col-md-9">
+        </div>
+        <div class="col-md-3">
+						<a href="{{ url('/student/dashboard')}}">
+							<button class="btn yellow-gold" type="button">
+								Switch To Student
+							</button>
+						</a>
+				</div>
+			@endif
+
       <div class="row">
         <div class="col-md-6 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
