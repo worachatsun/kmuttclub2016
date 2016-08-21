@@ -3,7 +3,13 @@
 </div>
 
 <div class="content">
-
+  @if ($errors->has())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            {{ $error }}<br>
+        @endforeach
+    </div>
+  @endif
 	{{ Form::open(array('url' => '/auth/login')) }}
 
 		<div class="alert alert-danger display-hide">

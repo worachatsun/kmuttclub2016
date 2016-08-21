@@ -27,14 +27,30 @@ class AuthController extends Controller
 
     public function postLogin(){
 
-        $error;
+        $error = "";
+
         if (Input::has('username')) {
 
             $username = Input::get('username');
             $password = Input::get('password');
+
+
+            if (!Adldap::getDefaultProvider()->search()->where('uid', '=', $username)->first()) {
+              $error['username']='กรุณากรอกรหัสนักศึกษาให้ถูกต้อง';
+              if (!Input::has('password')) {
+                  $error['password']='กรุณากรอกรหัสผ่าน';
+              }
+              return redirect('auth/login')->withErrors($error)->withInput();
+            }
+
+            if (!Input::has('password')) {
+                $error['password']='กรุณากรอกรหัสผ่าน';
+                return redirect('auth/login')->withErrors($error)->withInput();
+            }
+
             $user = User::where('username',$username)->first();
             if (isset($user)) {
-              if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)) {
+              if (Adldap::getDefaultProvider()->auth()->attempt($username,$password)){
                 Auth::Login($user);
                 return redirect('/student/dashboard');
               }
@@ -59,16 +75,21 @@ class AuthController extends Controller
                 }
             }
         }else{
-            if (Input::has('username')) {
+            if (!Input::has('username')) {
+              $error['username']='กรุณากรอกรหัสนักศึกษา';
+            }
+            if (!Input::has('password')&&!Input::has('username')) {
                 $error['username']='กรุณากรอกรหัสนักศึกษา';
+                $error['password']='กรุณากรอกรหัสผ่าน';
+                return redirect('auth/login')->withErrors($error);
             }
 
         }
         if (Input::has('password')) {
-                $error['password']='กรุณากรอกรหัสผ่าน';
-            }
+                $error['password']='กรุณากรอกรหัสผ่านให้ถูกต้อง';
+        }
         $theme = \Theme::uses('alchemist')->layout('default');
-        return $theme->layout('login')->scope("auth.login",$error)->render();
+        return redirect('auth/login')->withErrors($error)->withInput();
 
     }
 
