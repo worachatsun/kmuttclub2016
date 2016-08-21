@@ -84,7 +84,9 @@ INSERT INTO `club`(`club_id`, `club_name`, `club_secret_code`) VALUES
 (39,"ชมรมบริดจ์","BTC2Y"),
 (40,"ชมรมฟุตบอล","FT3LL"),
 (41,"KSIC","KS8IC"),
-(42,"KMUTT Innovation","1TNNV");
+(42,"KMUTT Innovation","1TNNV"),
+(43,"Alchemist","999"),
+(44,"Student union","STDUN");
 
 ก้อปใส่ SQL ใน MySQL ของน้องนะครับ
 
