@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Input;
 use Session;
 use Validator;
+use Excel;
 
 class ClubController extends ACMBaseController
 {
@@ -19,8 +20,6 @@ class ClubController extends ACMBaseController
     public function __construct(ClubRepositoryInterface $ClubRepository){
         parent::__construct();
         $this->ClubRepository = $ClubRepository;
-        $this->club_secret_code = 'CTN5R';
-        $this->club_id = 22;
     }
 
 
@@ -29,7 +28,6 @@ class ClubController extends ACMBaseController
     }
 
     public function getDashboard(){
-
       $std_id = array_get($this->user,'username');
       $role = $this->ClubRepository->checkRole($std_id);
       $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
@@ -44,7 +42,8 @@ class ClubController extends ACMBaseController
         $content = array(
             'club' => $club,
             'member_amount' => $member_amount,
-            'members' => $members
+            'members' => $members,
+            'role' => $role
         );
         return $this->theme->scope('club.dashboard',$content)->layout('org')->render();
       }
@@ -55,8 +54,8 @@ class ClubController extends ACMBaseController
       $std_id = array_get($this->user,'username');
       $role = $this->ClubRepository->checkRole($std_id);
       $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
-      if($role==='44'){
-        return $this->theme->scope('club.regis')->layout('blank')->render();
+      if($role != 'null'){
+        return $this->theme->scope('club.regis')->layout('org')->render();
       }else{
         return redirect('/');
       }
@@ -66,12 +65,12 @@ class ClubController extends ACMBaseController
 
     public function postRegis()
     {
-       $secret_code = Input::get('sc');
+       $secret_code = Input::get('club_id');
        if($secret_code == null){
             return redirect('/club/regis');
         }
-       $this->ClubRepository->studentEnroll($secret_code,$this->club_secret_code);
-       return $this->theme->scope('club.regis')->layout('blank')->render();
+       $this->ClubRepository->studentEnroll($secret_code, Session::get('club_secret')['0']->club_secret_code);
+       return redirect("club/dashboard");
 
     }
 
@@ -126,4 +125,37 @@ class ClubController extends ACMBaseController
         return $this->theme->scope('confirmclub',$club_info)->layout('std')->render();
       }
     }
+
+    public function getReport(){
+
+      $std_id = array_get($this->user,'username');
+      $role = $this->ClubRepository->checkRole($std_id);
+      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
+      $club = $this->ClubRepository->getClubInfo($club_secret_code);
+      $this->member = $this->ClubRepository->getAllMembers($role);
+      Excel::create("[REPORT]_".$club['club_name'], function($excel) {
+
+            $excel->sheet("REPORT", function($sheet) {
+              $data = array();
+
+              array_push($data,array('#','STUDENT ID','NAME - SURNAME','FACULTY','EMAIL','FACEBOOK'));
+              
+              foreach ( $this->member as $key => $c) {
+
+                array_push($data, array(
+                    $key+1,
+                    $c["std_id"],
+                    $c["name"]." ".$c["surname"],
+                    $c["faculty"],
+                    $c["email"],
+                    $c["facebook"],
+                ));
+              }
+
+              $sheet->fromArray($data, null, 'A1', false, false);
+            });
+
+        })->export('xlsx');                
+    }
+
 }

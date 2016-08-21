@@ -1,7 +1,27 @@
 <div class="page-container">
 	<div class="page-content club-list-container">
 		<div class="container">
+      @if ($role !== null)	
       <div class="row">
+        <div class="col-xs-12">
+            <p class="clearfix">
+              <a href="{{ url('/student/dashboard')}}">
+                <button class="btn yellow-gold pull-left" type="button">
+                  Switch To Student
+                </button>
+              </a>
+              <a href="{{ url('/club/report')}}">
+                <button class="btn pull-right  yellow-gold" type="button">
+                  Download Report
+                </button>
+              </a>
+            </p>
+        </div>
+      </div>
+			@endif
+
+      <div class="row">
+        
         <div class="col-md-6 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
@@ -17,6 +37,7 @@
 					</div>
 					</a>
 				</div>
+        
         <div class="col-md-3 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
@@ -32,7 +53,8 @@
 					</div>
 					</a>
 				</div>
-				<div class="col-md-3 col-xs-12">
+				
+        <div class="col-md-3 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="{{ url('club/regis') }}">
 					<div class="visual">
 						<i class="fa fa-group fa-icon-medium"></i>
@@ -73,6 +95,9 @@
                   <thead>
                     <tr class="uppercase">
                       <th>
+                        #
+                      </th>
+                      <th>
                         STUDENT ID
                       </th>
                       <th>
@@ -108,9 +133,7 @@
                         {{ $member['email'] }}
                       </td>
                       <td>
-                        <a href="{{ $member['facebook'] }}" class="btn default btn-xs green-stripe">
-													GO TO FACEBOOK
-                        </a>
+                        {{ $member['facebook'] }}
                       </td>
                     </tr>
                     @endforeach

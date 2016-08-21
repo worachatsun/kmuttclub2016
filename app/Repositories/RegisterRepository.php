@@ -15,17 +15,18 @@ class RegisterRepository implements RegisterRepositoryInterface
     $student = new Student();
     $fb = array_get($data,'fb');
     $email = array_get($data,'email');
+    $secret = $this->_secret();
     $student->where('std_id',array_get($detail_ldap,'username'))
-            ->update(['facebook'=>$fb,'email'=>$email]);
+            ->update(['facebook'=>$fb,'email'=>$email,'secret_code'=>$secret]);
     return 'success';
   }
 
   private function _secret(){
-    $code = substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1).
-            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1).
-            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1).
-            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1).
-            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1);
+    $code = substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1).
+            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1).
+            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1).
+            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1).
+            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1);
     $a = $this->Student->where('secret_code',$code)->first();
     if ($a === null || $a === "") {
     }else{

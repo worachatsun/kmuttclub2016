@@ -2,16 +2,32 @@
 	<div class="page-content club-list-container">
 		<div class="container">
 
-			<div class="row">
-				<div class="col-md-12">
-					<h1>Club List</h1>
+			@if ($role === null)
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Club List</h1>
+					</div>
 				</div>
-			</div>
+			@else 
+				<div class="row">
+
+        <div class="col-xs-12">
+            <p class="clearfix">
+              <a href="{{ url('/club')}}">
+                <button class="btn yellow-gold pull-left" type="button">
+                  Switch To Club
+                </button>
+              </a>
+            </p>
+        </div>
+      </div>
+
+			@endif	
 
 			@if (count($clubs) === 0)
 				<div class="row">
 					<div class="note note-success note-bordered">
-						<h4 class="block">How to Register Club</h4>
+						<h4 class="block">How to register club</h4>
 						<p>
 							First visit about club and click in "Register Club" and put Club Secret Code in to the field.
 						</p>

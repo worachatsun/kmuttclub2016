@@ -233,6 +233,14 @@ class LDAPLoadController extends Controller
         [ 'std_id' => '58070502490', 'club_id' =>'12'],
         [ 'std_id' => '58070502467', 'club_id' =>'12'],
         [ 'std_id' => '58070502476', 'club_id' =>'12'],
+        [ 'std_id' => '58090500231', 'club_id' =>'45'],
+        [ 'std_id' => '57070501075', 'club_id' =>'46'],
+        [ 'std_id' => '57070500215', 'club_id' =>'46'],
+        [ 'std_id' => '58340500011', 'club_id' =>'46'],
+        [ 'std_id' => '58340500049', 'club_id' =>'46'],
+        [ 'std_id' => '58340500044', 'club_id' =>'46'],
+        [ 'std_id' => '55070501038', 'club_id' =>'46'],
+        [ 'std_id' => '55070502447', 'club_id' =>'46'],
 );
 
 

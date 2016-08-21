@@ -34,5 +34,27 @@ class StudentRepository implements StudentRepositoryInterface {
         ->where('club_id',$club_id)
         ->delete();
     }
+    
+    public function getRole($std_id)
+    {
+        $role = $this->studentAccounts
+        ->select('role')
+        ->where('std_id',$std_id)
+        ->get()->first();
+            
+        $data = json_decode($role,true);
+        return $data;
+    }
 
+    public function getClubFromRole($role){
+
+        $club = $this->clubs
+        ->select('club_secret_code')
+        ->where('club_id', $role)
+        ->get();
+
+        return json_decode($club);
+
+    }
+       
 }
