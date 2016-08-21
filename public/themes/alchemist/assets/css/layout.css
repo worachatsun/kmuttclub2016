@@ -1629,6 +1629,7 @@ Pace - Page Progress
 .page-content {
   background: #eff3f8;
   padding: 15px 0 15px;
+  padding-bottom: 30px;
 }
 
 @media (max-width: 991px) {
