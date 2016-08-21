@@ -22,11 +22,11 @@ class RegisterRepository implements RegisterRepositoryInterface
   }
 
   private function _secret(){
-    $code = substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1).
-            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1).
-            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1).
-            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1).
-            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(34,1),1);
+    $code = substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1).
+            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1).
+            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1).
+            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1).
+            substr('BCDEFGHIJKMNOPQRSTUVWXYZ0123456789',rand(1,34),1);
     $a = $this->Student->where('secret_code',$code)->first();
     if ($a === null || $a === "") {
     }else{
