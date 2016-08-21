@@ -99,6 +99,9 @@ class ClubRepository implements ClubRepositoryInterface {
       return array_get($role,'role');
     }
 
-
+    public function getClubSecretCode($club_id){
+      $club_secret_code = $this->clubs->select('club_secret_code')->where('club_id',$club_id)->first();
+      return array_get($club_secret_code,'club_secret_code');
+    }
 
 }

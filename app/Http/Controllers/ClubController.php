@@ -25,39 +25,29 @@ class ClubController extends ACMBaseController
 
 
     public function getIndex(){
-        if (Session::get('club_id') === "" || Session::get('club_id') === null) {
-          return $this->theme->layout('login')->scope('club.index')->render();
-        }else{
-          return redirect('club/dashboard');
-        }
-    }
-
-    public function postDashboard(){
-      $club_id = Input::get('club_id');
-      Session::put('club_id', $this->ClubRepository->getClubNumber($club_id)['0']['club_id']);
-      Session::put('club_secret', $club_id);
       return redirect('club/dashboard');
     }
 
     public function getDashboard(){
-      if (Session::get('club_id')===""||Session::get('club_id')===null) {
-        return redirect('club');
+
+      $std_id = array_get($this->user,'username');
+      $role = $this->ClubRepository->checkRole($std_id);
+      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
+      if (is_null($role)||$role==="") {
+        dd('access denies');
+      }elseif($role==='43'){
+        return redirect('alchemist');
+      }else{
+        $club = $this->ClubRepository->getClubInfo($club_secret_code);
+        $member_amount = $this->ClubRepository->getMemberAmount($role);
+        $members = $this->ClubRepository->getAllMembers($role);
+        $content = array(
+            'club' => $club,
+            'member_amount' => $member_amount,
+            'members' => $members
+        );
+        return $this->theme->scope('club.dashboard',$content)->layout('org')->render();
       }
-      $club = $this->ClubRepository->getClubInfo(Session::get('club_secret'));
-      $member_amount = $this->ClubRepository->getMemberAmount(Session::get('club_id'));
-      $members = $this->ClubRepository->getAllMembers(Session::get('club_id'));
-      $content = array(
-          'club' => $club,
-          'member_amount' => $member_amount,
-          'members' => $members
-      );
-      return $this->theme->scope('club.dashboard',$content)->layout('org')->render();
-
-    }
-
-    public function getClublogout(){
-        Session::forget('club_id');
-        return redirect('club');
     }
 
     public function getRegis()

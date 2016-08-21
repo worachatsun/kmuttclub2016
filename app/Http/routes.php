@@ -19,6 +19,7 @@ Route::group(['middleware' => ['web']], function () {
       Route::controller('club','ClubController');
       Route::controller('organization', 'OrgController');
       Route::controller('student','StudentController');
+      Route::controller('alchemist','AlchemistController');
     });
 
 });

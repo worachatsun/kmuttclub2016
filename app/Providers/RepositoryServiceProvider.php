@@ -29,5 +29,6 @@ class RepositoryServiceProvider extends ServiceProvider
         App::bind('App\Repositories\ClubRepositoryInterface', 'App\Repositories\ClubRepository');
         App::bind('App\Repositories\OrgRepositoryInterface', 'App\Repositories\OrgRepository');
         App::bind('App\Repositories\StudentRepositoryInterface', 'App\Repositories\StudentRepository');
+        App::bind('App\Repositories\AlchemistRepositoryInterface', 'App\Repositories\AlchemistRepository');
     }
 }
