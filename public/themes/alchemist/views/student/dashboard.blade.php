@@ -11,7 +11,7 @@
 			@if (count($clubs) === 0)
 				<div class="row">
 					<div class="note note-success note-bordered">
-						<h4 class="block">How to Register Club</h4>
+						<h4 class="block">How to register club</h4>
 						<p>
 							First visit about club and click in "Register Club" and put Club Secret Code in to the field.
 						</p>
