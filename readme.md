@@ -50,7 +50,7 @@ INSERT INTO `club`(`club_id`, `club_name`, `club_secret_code`) VALUES
 (5,"ชมรมธนบุรีโรบอทคอนเทส","RB1CT"),
 (6,"ชมรมติว","TUECB"),
 (7,"ชมรมอิเล็กทรอนิกส์บางมด","ELEBM"),
-(8,"ชมรม 2B-KMUTT","2BKMTT"),
+(8,"ชมรม 2B-KMUTT","2BKMT"),
 (9,"ชมรมพัฒนาเกมส์","DVGME"),
 (10,"KMUTT - Entreprecnur Club","ENPCB"),
 (11,"ชมรมศิลปวัฒนธรรมอีสาน","ESNCB"),
