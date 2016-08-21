@@ -3,18 +3,20 @@
 		<div class="container">
       @if ($role !== null)	
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-xs-12">
+            <p class="clearfix">
+              <a href="{{ url('/student/dashboard')}}">
+                <button class="btn yellow-gold pull-left" type="button">
+                  Switch To Student
+                </button>
+              </a>
+            </p>
         </div>
-        <div class="col-md-3">
-						<a href="{{ url('/student/dashboard')}}">
-							<button class="btn yellow-gold" type="button">
-								Switch To Student
-							</button>
-						</a>
-				</div>
+      </div>
 			@endif
 
       <div class="row">
+        
         <div class="col-md-6 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
@@ -30,6 +32,7 @@
 					</div>
 					</a>
 				</div>
+        
         <div class="col-md-3 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="javascript:;">
 					<div class="visual">
@@ -45,7 +48,8 @@
 					</div>
 					</a>
 				</div>
-				<div class="col-md-3 col-xs-12">
+				
+        <div class="col-md-3 col-xs-12">
 					<a class="dashboard-stat dashboard-stat-light yellow-gold" href="{{ url('club/regis') }}">
 					<div class="visual">
 						<i class="fa fa-group fa-icon-medium"></i>
