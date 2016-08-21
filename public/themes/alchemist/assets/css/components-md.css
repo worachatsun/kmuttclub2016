@@ -8073,7 +8073,7 @@ Green Default
 
 /* Button Strip */
 .btn.green-stripe {
-  border-left: 3px solid #26a69a;
+  border-left: 3px solid #26a69a !important;
 }
 
 /* Portlet */
@@ -11878,7 +11878,7 @@ Yellow Gold
 
 /* Button Strip */
 .btn.yellow-gold-stripe {
-  border-left: 3px solid #E87E04;
+  border-left: 3px solid #E87E04 !important;
 }
 
 /* Portlet */

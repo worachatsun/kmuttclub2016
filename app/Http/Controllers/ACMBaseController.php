@@ -16,7 +16,7 @@ class ACMBaseController extends Controller
         $this->theme = Theme::uses('alchemist')->layout('default');
 
          //temporary fix for null $user problem = =
-        //$this->user = Auth::user();
+        $this->user = Auth::user();
 
         // if(isset($this->user)){
         //     //$this->notification =  $this->user->getNotificationsNotRead();

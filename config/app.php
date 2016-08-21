@@ -158,11 +158,17 @@ return [
 
         App\Providers\RepositoryServiceProvider::class,
 
+        Adldap\Laravel\AdldapServiceProvider::class,
+        Adldap\Laravel\AdldapAuthServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
 
         'Teepluss\Theme\ThemeServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+
+        Collective\Bus\BusServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        //Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
 
 
     ],
@@ -217,6 +223,11 @@ return [
         'HTML' => Collective\Html\HtmlFacade::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+        'Adldap' => Adldap\Laravel\Facades\Adldap::class,
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        //'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
 
     ],
 
