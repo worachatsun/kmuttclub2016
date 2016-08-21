@@ -3,7 +3,8 @@
 </div>
 
 <div class="alert alert-danger text-center">
-	<strong>BETA!</strong> Testing
+	<strong>BETA!</strong> Testing<br>
+	<i>Server : <?php echo gethostname(); ?>
 </div>
 
 <div class="content">
