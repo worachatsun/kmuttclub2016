@@ -12,9 +12,9 @@
 				<div class="row">
         <div class="col-xs-12">
             <p class="clearfix">
-              <a href="{{ url('/student/dashboard')}}">
+              <a href="{{ url('/club/dashboard')}}">
                 <button class="btn yellow-gold pull-left" type="button">
-                  Switch To Student
+                  Switch To Club
                 </button>
               </a>
             </p>
