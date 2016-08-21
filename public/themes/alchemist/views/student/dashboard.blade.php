@@ -22,6 +22,14 @@
 				<div class="row">
 					<div class="top-news margin-top-10 col-xs-12">
 						<div class="btn yellow-gold btn-block">
+							<div class="tools" style="float: right;">
+								<form action="deletingclub" method="POST">
+									<input type="hidden" name="club_id" value="{{ $club['club_id'] }}">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<button class="btn yellow-gold" type="submit">X</button>
+								</form>
+									</a>
+								</div>
 							<span class="title">
 								{{ $club['club_name'] }}
 							</span>
@@ -29,11 +37,11 @@
 								<i class="fa fa-tags"></i>
 								สมัครเมื่อ {{ $club['created_at'] }} </em>
 						</div>
-						<form action="deletingclub" method="POST">
+						<!-- <form action="deletingclub" method="POST">
 							<input type="hidden" name="club_id" value="{{ $club['club_id'] }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<button class="btn btn-block blue" type="submit">X</button>
-						</form>
+						</form> -->
 					</div>
 				</div>
 				@endforeach

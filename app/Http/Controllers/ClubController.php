@@ -109,7 +109,7 @@ class ClubController extends ACMBaseController
       } else {
         $std_id = array_get($this->user,'username');
         $club_info = $this->ClubRepository->getClubInfo(array_get($data,'club_id'));
-        return $this->theme->scope('confirmclub',$club_info)->render();
+        return $this->theme->scope('confirmclub',$club_info)->layout('std')->render();
       }
     }
 }
