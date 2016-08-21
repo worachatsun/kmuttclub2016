@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Input;
 use Session;
 use Validator;
+use Excel;
 
 class ClubController extends ACMBaseController
 {
@@ -124,4 +125,37 @@ class ClubController extends ACMBaseController
         return $this->theme->scope('confirmclub',$club_info)->layout('std')->render();
       }
     }
+
+    public function getReport(){
+
+      $std_id = array_get($this->user,'username');
+      $role = $this->ClubRepository->checkRole($std_id);
+      $club_secret_code = $this->ClubRepository->getClubSecretCode($role);
+      $club = $this->ClubRepository->getClubInfo($club_secret_code);
+      $this->member = $this->ClubRepository->getAllMembers($role);
+      Excel::create("[REPORT]_".$club['club_name'], function($excel) {
+
+            $excel->sheet("REPORT", function($sheet) {
+              $data = array();
+
+              array_push($data,array('#','STUDENT ID','NAME - SURNAME','FACULTY','EMAIL','FACEBOOK'));
+              
+              foreach ( $this->member as $key => $c) {
+
+                array_push($data, array(
+                    $key+1,
+                    $c["std_id"],
+                    $c["name"]." ".$c["surname"],
+                    $c["faculty"],
+                    $c["email"],
+                    $c["facebook"],
+                ));
+              }
+
+              $sheet->fromArray($data, null, 'A1', false, false);
+            });
+
+        })->export('xlsx');                
+    }
+
 }
