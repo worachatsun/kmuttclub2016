@@ -2,11 +2,26 @@
 	<div class="page-content club-list-container">
 		<div class="container">
 
-			<div class="row">
-				<div class="col-md-12">
-					<h1>Club List</h1>
+			@if ($role === null)
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Club List</h1>
+					</div>
 				</div>
-			</div>
+			@else 
+				<div class="row">
+					<div class="col-md-9">
+						<h1>Club List</h1>
+					</div>
+					<div class="col-md-3">
+						<a href="{{ url('/club')}}">
+							<button class="btn yellow-gold" type="button">
+								Switch To Club
+							</button>
+						</a>
+					</div>
+				</div>
+			@endif	
 
 			@if (count($clubs) === 0)
 				<div class="row">
