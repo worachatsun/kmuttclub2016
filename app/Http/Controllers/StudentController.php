@@ -16,7 +16,6 @@ class StudentController extends ACMBaseController
     public function __construct(StudentRepositoryInterface $StudentRepository){
         parent::__construct();
         $this->StudentRepository = $StudentRepository;
-        $this->std_id = '58130500009';
     }
 
 

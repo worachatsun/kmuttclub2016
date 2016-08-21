@@ -17,6 +17,9 @@
 			<span>
 			Enter any username and password. </span>
 		</div>
+
+    <center> <span style="font-size:1.5em; color:#fff;"> Login with KMUTT Account </span></center>
+    <br>
 		<div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">
 			<label class="control-label visible-ie8 visible-ie9">Username</label>
 			<div class="input-icon">
