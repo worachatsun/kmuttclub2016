@@ -10,7 +10,7 @@
                   Switch To Student
                 </button>
               </a>
-              <a href="{{ url('/student/dashboard')}}">
+              <a href="{{ url('/club/report')}}">
                 <button class="btn pull-right  yellow-gold" type="button">
                   Download Report
                 </button>
