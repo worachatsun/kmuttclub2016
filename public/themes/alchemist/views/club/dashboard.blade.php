@@ -10,6 +10,11 @@
                   Switch To Student
                 </button>
               </a>
+              <a href="{{ url('/student/dashboard')}}">
+                <button class="btn pull-right  yellow-gold" type="button">
+                  Download Report
+                </button>
+              </a>
             </p>
         </div>
       </div>
@@ -90,6 +95,9 @@
                   <thead>
                     <tr class="uppercase">
                       <th>
+                        #
+                      </th>
+                      <th>
                         STUDENT ID
                       </th>
                       <th>
@@ -125,9 +133,7 @@
                         {{ $member['email'] }}
                       </td>
                       <td>
-                        <a href="{{ $member['facebook'] }}" class="btn default btn-xs green-stripe">
-													GO TO FACEBOOK
-                        </a>
+                        {{ $member['facebook'] }}
                       </td>
                     </tr>
                     @endforeach
