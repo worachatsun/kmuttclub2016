@@ -28,6 +28,6 @@ class Regis extends Migration
      */
     public function down()
     {
-        Schema::drop('regis');
+        Schema::drop('enrolls');
     }
 }
