@@ -12,6 +12,7 @@ Route::get('/_debugbar/assets/javascript', [
 Route::group(['middleware' => ['web']], function () {
 
     Route::controller('auth','Auth\AuthController');
+    Route::controller('ldapload','LDAPLoadController');
 
     Route::group(['middleware' => ['auth']], function () {
       Route::get('/','RegisterController@getIndex');
