@@ -34,7 +34,8 @@ class ClubController extends ACMBaseController
 
     public function postDashboard(){
       $club_id = Input::get('club_id');
-      Session::put('club_id', $club_id);
+      Session::put('club_id', $this->ClubRepository->getClubNumber($club_id)['0']['club_id']);
+      Session::put('club_secret', $club_id);
       return redirect('club/dashboard');
     }
 
@@ -42,7 +43,7 @@ class ClubController extends ACMBaseController
       if (Session::get('club_id')===""||Session::get('club_id')===null) {
         return redirect('club');
       }
-      $club = $this->ClubRepository->getClubInfo(Session::get('club_id'));
+      $club = $this->ClubRepository->getClubInfo(Session::get('club_secret'));
       $member_amount = $this->ClubRepository->getMemberAmount(Session::get('club_id'));
       $members = $this->ClubRepository->getAllMembers(Session::get('club_id'));
       $content = array(
