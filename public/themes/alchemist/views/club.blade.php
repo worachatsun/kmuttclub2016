@@ -1,40 +1,8 @@
-<div class="page-header">
-	<div class="page-header-top">
-		<div class="container">
-			<div class="page-logo">
-				<a href="index.html"><img src="<?php echo url(""); ?>/themes/alchemist/assets/img/logo-default.png" alt="logo" class="logo-default"></a>
-			</div>
-
-			<div class="top-menu">
-				<ul class="nav navbar-nav pull-right">
-					<li class="dropdown dropdown-user dropdown-dark">
-						<a class="btn yellow-gold" href="{{ url('auth/logout') }}">
-              <i class="icon-key"></i> Log Out
-            </a>
-					<li>
-        </ul>
-			</div>
-		</div>
-	</div>
-
-	<div class="page-header-menu">
-		<div class="container">
-			<form class="search-form" action="extra_search.html" method="GET">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search" name="query">
-					<span class="input-group-btn">
-					<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-					</span>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
 <div class="page-container">
 	<div class="page-head">
 		<div class="container">
 			<div class="page-title">
-				<h1><small>Hello</small> {{ $name }} <small>{{ $faculty }}</small></h1>
+				<h1><small>Hello.</small> {{ $name }} <small>{{ $faculty }}</small></h1>
 
 			</div>
 
