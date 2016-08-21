@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Input;
 use Session;
 use Adldap;
+use App\Models\Student;
+use App\User;
 
 class LDAPLoadController extends Controller
 {
@@ -74,7 +76,6 @@ class LDAPLoadController extends Controller
         [ 'std_id' => '57070502440', 'club_id' =>'7'],
         [ 'std_id' => '56070502448', 'club_id' =>'7'],
         [ 'std_id' => '56070502459', 'club_id' =>'7'],
-        [ 'std_id' => '56070502476', 'club_id' =>'7'],
         [ 'std_id' => '57080501466', 'club_id' =>'9'],
         [ 'std_id' => '57070503425', 'club_id' =>'9'],
         [ 'std_id' => '57080501428', 'club_id' =>'9'],
@@ -243,8 +244,19 @@ class LDAPLoadController extends Controller
         $mail = array_get($data, 'attributes.mail.0');
         $faculty = explode("/", array_get($data, 'attributes.homedirectory.0') );
         echo $name." |email ".$mail." faculty ".$faculty[2];
-        //print_r($faculty);
-        echo "<br><hr>";
+
+        $student = new Student();
+            $student->std_id = $stu['std_id'];
+            $student->name = $name;
+            $student->surname = array_get($data, 'attributes.givenname.0');
+            $student->faculty = array_get($faculty, '2');
+            $student->save();
+
+            $user = User::create([
+                'username'  =>  $stu['std_id'],
+                'name'      =>  $name,
+                'faculty'   =>  array_get($faculty, '2'),
+            ]);
     }
     //
 
