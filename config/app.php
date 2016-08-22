@@ -168,7 +168,7 @@ return [
 
         Collective\Bus\BusServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        //Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
 
 
     ],
@@ -227,7 +227,7 @@ return [
         'Adldap' => Adldap\Laravel\Facades\Adldap::class,
 
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        //'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
+        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
 
     ],
 

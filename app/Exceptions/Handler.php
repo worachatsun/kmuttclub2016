@@ -44,18 +44,20 @@ class Handler extends ExceptionHandler
             'body'   => Request::all()
         ]);
         //
-        // //$error = array();
-        // //     'error' => $e,
-        // //     'header' => Request::header(),
-        // //     'server' => Request::server(),
-        // //     'url' => Request::url(),
-        // //     'body' => Request::all()
-        // // );
+        $extra = array(
+            'header' => Request::header(),
+            'server' => Request::server(),
+            'url' => Request::url(),
+            'body' => Request::all()
+        );
         //
         // //if ($this->shouldReport($e)) {
         // //    dd("hello");
-        //     app('sentry')->captureException($e);
+        app('sentry')->captureException($e, ['extra' => $extra]);
         // //}
+
+
+
         return parent::report($e);
     }
 
