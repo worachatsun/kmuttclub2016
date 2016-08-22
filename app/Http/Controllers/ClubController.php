@@ -53,9 +53,7 @@ class ClubController extends ACMBaseController
     {
         return $this->theme->scope('club.regis')->layout('org')->render();
     }
-
-
-
+    
     public function postRegis()
     {
        $secret_code = Input::get('club_id');

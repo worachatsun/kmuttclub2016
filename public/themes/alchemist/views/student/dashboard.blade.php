@@ -1,5 +1,5 @@
 <div class="page-container">
-	<div class="page-content club-list-container">
+	<div class="page-content club-list-container" style="margin-bottom: 30px">
 		<div class="container">
 
 			@if ($role === null)
