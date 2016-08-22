@@ -27,5 +27,5 @@
       <input type="text" class="form-control input-circle" value="" disabled >
     </div>-->
   </div>
-  <button type="submit" class="btn btn-block blue" style="font-size: 20px; padding: 20px 0;">Confirm Registration</button>
+  <button type="submit" class="btn btn-block blue" style="font-size: 20px; padding: 20px 0; margin-bottom: 70px;">Confirm Registration</button>
 </form>
