@@ -158,7 +158,7 @@ return [
                 |
                 */
 
-                'admin_account_suffix' => ' ',
+                'admin_account_suffix' => '',
 
                 /*
                 |--------------------------------------------------------------------------
@@ -172,10 +172,10 @@ return [
                 |
                 */
 
-                'admin_username' => env('ADLDAP_ADMIN_USERNAME', 'uid=kmuttsuadmin,ou=admin,dc=kmutt,dc=ac,dc=th'),
-                'admin_password' => env('ADLDAP_ADMIN_PASSWORD', "7c_sBB8uPSQ6!mC"),
-                //'admin_username' => '',
-                //'admin_password' => '',
+                //'admin_username' => env('ADLDAP_ADMIN_USERNAME', 'uid=kmuttsuadmin,ou=admin,dc=kmutt,dc=ac,dc=th'),
+                //'admin_password' => env('ADLDAP_ADMIN_PASSWORD', "7c_sBB8uPSQ6!mC"),
+                'admin_username' => '',
+                'admin_password' => '',
 
                 /*
                 |--------------------------------------------------------------------------
